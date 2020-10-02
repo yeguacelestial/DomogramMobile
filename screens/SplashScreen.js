@@ -32,7 +32,7 @@ const SplashScreen = ({ navigation }) => {
                 animation="fadeInUpBig"
             >
                 <Text style={styles.title}>Domogram, tu asistente doméstico</Text>
-                <Text style={styles.text}>Inicia sesión con tu cuenta</Text>
+                <Text style={styles.text}>Accede para administrar tu hogar desde tu móvil</Text>
 
                 {/* Botón 'Empieza' */}
                 <View style={styles.button}>
