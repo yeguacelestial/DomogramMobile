@@ -2,14 +2,13 @@ import React from 'react'
 import {
     View,
     Text,
-    TouchableOpacity,
     StyleSheet,
+    TouchableOpacity,
     Dimensions,
 } from 'react-native'
 
 import { LinearGradient } from 'expo-linear-gradient'
 import { AntDesign } from '@expo/vector-icons';
-
 import * as Animatable from 'react-native-animatable'
 
 
