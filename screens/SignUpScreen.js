@@ -95,8 +95,11 @@ const SignUpScreen = ({ navigation }) => {
     // Handling registration fields
     const handleRegisterForm = async (form_data) => {
 
-        // If fields are not empty...
-        if (form_data.email.length > 0 && form_data.password.length > 0) {
+        // If fields are not empty and passwords matches
+        if (form_data.email.length > 0 &&
+            form_data.password.length > 0 &&
+            form_data.password === form_data.confirm_password) {
+
             const result = await fetch(`${domogram_api_endpoint}/signup`, {
                 method: 'post',
                 headers: {
@@ -127,8 +130,12 @@ const SignUpScreen = ({ navigation }) => {
             }
         }
 
+        else if (data.password !== data.confirm_password) {
+            Alert.alert('¡Tu contraseña no coincide!', 'Asegúrate de haber confirmado tu contraseña correctamente.')
+        }
+
         else {
-            alert("Por favor, llena los campos requeridos.")
+            Alert.alert('Error al registrarse', 'Por favor, llena los campos requeridos.')
         }
     }
 
@@ -264,7 +271,7 @@ const SignUpScreen = ({ navigation }) => {
                 <View style={styles.button}>
                     <TouchableOpacity
                         style={styles.signIn}
-                        onPress={() => handleRegisterForm({ email: data.email, password: data.password })}
+                        onPress={() => handleRegisterForm({ email: data.email, password: data.password, confirm_password: data.confirm_password })}
                     >
                         <LinearGradient
                             colors={['#08d4c4', '#01ab9d']}
