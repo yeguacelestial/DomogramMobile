@@ -5,9 +5,9 @@ import {
     StyleSheet,
     Platform,
     TouchableOpacity,
-    Dimensions,
     TextInput,
-    StatusBar
+    StatusBar,
+    Alert
 } from 'react-native'
 
 // Expo Icons
@@ -17,7 +17,8 @@ import { Entypo } from '@expo/vector-icons';
 
 import { LinearGradient } from 'expo-linear-gradient'
 import * as Animatable from 'react-native-animatable'
-import { Line } from 'react-native-svg';
+
+import { domogram_api_endpoint } from './config'
 
 
 const SignInScreen = ({ navigation }) => {
@@ -61,7 +62,6 @@ const SignInScreen = ({ navigation }) => {
 
     // Handling Password entry
     const updateSecureTextEntry = () => {
-
         setData({
             ...data,
 
@@ -69,6 +69,47 @@ const SignInScreen = ({ navigation }) => {
             secureTextEntry: !data.secureTextEntry
         })
     }
+
+    // Handling Login fields
+    const handleLoginForm = async (form_data) => {
+        // If fields are not empty...
+        if (form_data.email.length > 0 && form_data.password.length > 0) {
+            const result = await fetch(`${domogram_api_endpoint}/signin`, {
+                method: 'post',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: form_data.email,
+                    password: form_data.password
+                })
+            })
+
+            const response = await result.json()
+            const response_value = Object.values(response)[0]
+
+            // Handling different types of responses
+            if (result.ok && response.success) {
+                console.log(JSON.stringify(response))
+                Alert.alert('¡Bienvenido!', response_value)
+
+            } else if (result.ok && response.error) {
+                console.log(JSON.stringify(response))
+                Alert.alert('Algo salió mal', response_value)
+
+            } else {
+                console.log(JSON.stringify(response))
+                Alert.alert('Algo salió mal', 'Hay un problema con la API. Por favor, contacta al desarrollador.')
+            }
+        }
+
+        else {
+            alert("Por favor, llena los campos requeridos.")
+        }
+    }
+
+
     return (
         <View style={styles.container}>
             {/* StatusBar */}
@@ -158,12 +199,17 @@ const SignInScreen = ({ navigation }) => {
 
                 {/* Botón "Iniciar sesión" */}
                 <View style={styles.button}>
-                    <LinearGradient
-                        colors={['#08d4c4', '#01ab9d']}
+                    <TouchableOpacity
                         style={styles.signIn}
+                        onPress={() => handleLoginForm({ email: data.email, password: data.password })}
                     >
-                        <Text style={[styles.textSign, { color: 'white' }]}>Iniciar sesión</Text>
-                    </LinearGradient>
+                        <LinearGradient
+                            colors={['#08d4c4', '#01ab9d']}
+                            style={styles.signIn}
+                        >
+                            <Text style={[styles.textSign, { color: 'white' }]}>Iniciar sesión</Text>
+                        </LinearGradient>
+                    </TouchableOpacity>
 
                     <TouchableOpacity
                         onPress={() => navigation.navigate('SignUpScreen')}
