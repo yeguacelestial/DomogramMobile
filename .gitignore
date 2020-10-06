@@ -128,3 +128,6 @@ docs/pages/versions/*/react-native/*.diff
 
 # Home
 /home/dist
+
+# Custom
+screens/config.js
