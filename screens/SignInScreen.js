@@ -92,7 +92,7 @@ const SignInScreen = ({ navigation }) => {
             // Handling different types of responses
             if (result.ok && response.success) {
                 console.log(JSON.stringify(response))
-                Alert.alert('¡Bienvenido!', response_value)
+                Alert.alert('¡Hola!', response_value)
 
             } else if (result.ok && response.error) {
                 console.log(JSON.stringify(response))
