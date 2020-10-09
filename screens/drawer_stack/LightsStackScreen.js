@@ -5,13 +5,14 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import LightsScreen from '../navigation/LightsScreen'
 
 
+const background_color = '#c41c00'
 const LightsStack = createStackNavigator()
 
 const LightsStackScreen = ({ navigation }) => {
     return (
         <LightsStack.Navigator screenOptions={{
             headerStyle: {
-                backgroundColor: '#009387',
+                backgroundColor: `${background_color}`,
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
@@ -26,7 +27,7 @@ const LightsStackScreen = ({ navigation }) => {
                         <Icon.Button
                             name="ios-menu"
                             size={25}
-                            backgroundColor="#009387"
+                            backgroundColor={`${background_color}`}
                             onPress={() => {
                                 navigation.openDrawer()
                             }}

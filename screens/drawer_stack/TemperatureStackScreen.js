@@ -4,14 +4,14 @@ import { createStackNavigator } from '@react-navigation/stack'
 import Icon from 'react-native-vector-icons/Ionicons'
 import TemperatureScreen from '../navigation/TemperatureScreen'
 
-
+const background_color = '#694fad'
 const TemperatureStack = createStackNavigator()
 
 const TemperatureStackScreen = ({ navigation }) => {
     return (
         <TemperatureStack.Navigator screenOptions={{
             headerStyle: {
-                backgroundColor: '#009387',
+                backgroundColor: `${background_color}`,
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
@@ -26,7 +26,7 @@ const TemperatureStackScreen = ({ navigation }) => {
                         <Icon.Button
                             name="ios-menu"
                             size={25}
-                            backgroundColor="#009387"
+                            backgroundColor={`${background_color}`}
                             onPress={() => {
                                 navigation.openDrawer()
                             }}

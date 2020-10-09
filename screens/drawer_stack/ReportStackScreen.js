@@ -4,14 +4,14 @@ import { createStackNavigator } from '@react-navigation/stack'
 import Icon from 'react-native-vector-icons/Ionicons'
 import ReportScreen from '../navigation/ReportScreen'
 
-
+const background_color = '#d02860'
 const ReportStack = createStackNavigator()
 
 const ReportStackScreen = ({ navigation }) => {
     return (
         <ReportStack.Navigator screenOptions={{
             headerStyle: {
-                backgroundColor: '#009387',
+                backgroundColor: `${background_color}`,
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
@@ -26,7 +26,7 @@ const ReportStackScreen = ({ navigation }) => {
                         <Icon.Button
                             name="ios-menu"
                             size={25}
-                            backgroundColor="#009387"
+                            backgroundColor={`${background_color}`}
                             onPress={() => {
                                 navigation.openDrawer()
                             }}
