@@ -2,31 +2,32 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 
 import Icon from 'react-native-vector-icons/Ionicons'
-import HomeScreen from '../navigation/HomeScreen'
+import LightsScreen from './LightsScreen'
 
 
-const HomeStack = createStackNavigator()
+const background_color = '#c41c00'
+const LightsStack = createStackNavigator()
 
-const HomeStackScreen = ({ navigation }) => {
+const LightsStackScreen = ({ navigation }) => {
     return (
-        <HomeStack.Navigator screenOptions={{
+        <LightsStack.Navigator screenOptions={{
             headerStyle: {
-                backgroundColor: '#009387',
+                backgroundColor: `${background_color}`,
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
                 fontWeight: 'bold'
             },
         }}>
-            <HomeStack.Screen
-                name="Home"
-                component={HomeScreen}
+            <LightsStack.Screen
+                name="Luces"
+                component={LightsScreen}
                 options={{
                     headerLeft: () => (
                         <Icon.Button
                             name="ios-menu"
                             size={25}
-                            backgroundColor="#009387"
+                            backgroundColor={`${background_color}`}
                             onPress={() => {
                                 navigation.openDrawer()
                             }}
@@ -34,8 +35,8 @@ const HomeStackScreen = ({ navigation }) => {
                     )
                 }}
             />
-        </HomeStack.Navigator>
+        </LightsStack.Navigator>
     )
 }
 
-export default HomeStackScreen
+export default LightsStackScreen

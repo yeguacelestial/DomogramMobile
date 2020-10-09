@@ -2,7 +2,7 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 
 import Icon from 'react-native-vector-icons/Ionicons'
-import ReportScreen from '../navigation/ReportScreen'
+import ReportScreen from './ReportScreen'
 
 const background_color = '#d02860'
 const ReportStack = createStackNavigator()

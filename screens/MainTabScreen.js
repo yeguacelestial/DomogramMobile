@@ -1,10 +1,10 @@
 import React from 'react'
 
-import HomeStackScreen from './drawer_stack/HomeStackScreen'
-import MovementStackScreen from './drawer_stack/MovementStackScreen'
-import LightsStackScreen from './drawer_stack/LightsStackScreen'
-import TemperatureStackScreen from './drawer_stack/TemperatureStackScreen'
-import ReportStackScreen from './drawer_stack/ReportStackScreen'
+import HomeStackScreen from './drawer_inicio/home/HomeStackScreen'
+import MovementStackScreen from './drawer_inicio/movimiento/MovementStackScreen'
+import LightsStackScreen from './drawer_inicio/luces/LightsStackScreen'
+import TemperatureStackScreen from './drawer_inicio/temperatura/TemperatureStackScreen'
+import ReportStackScreen from './drawer_inicio/reporte/ReportStackScreen'
 
 // Material Bottom Tab Navigator
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'

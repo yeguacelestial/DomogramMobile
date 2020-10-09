@@ -2,7 +2,7 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 
 import Icon from 'react-native-vector-icons/Ionicons'
-import MovementScreen from '../navigation/MovementScreen'
+import MovementScreen from './MovementScreen'
 
 const background_color = '#1f65ff'
 const MovementStack = createStackNavigator()

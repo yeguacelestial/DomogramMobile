@@ -2,7 +2,7 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 
 import Icon from 'react-native-vector-icons/Ionicons'
-import TemperatureScreen from '../navigation/TemperatureScreen'
+import TemperatureScreen from './TemperatureScreen'
 
 const background_color = '#694fad'
 const TemperatureStack = createStackNavigator()
