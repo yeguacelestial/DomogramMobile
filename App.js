@@ -20,26 +20,89 @@ import { AuthContext } from './components/context'
 const Drawer = createDrawerNavigator()
 
 const App = () => {
-  const [isLoading, setIsLoading] = React.useState(true)
-  const [userToken, setUserToken] = React.useState(null)
+  // const [isLoading, setIsLoading] = React.useState(true)
+  // const [userToken, setUserToken] = React.useState(null)
+
+  const initialLoginState = {
+    isLoading: true,
+    userName: null,
+    userToken: null
+  }
+
+  const loginReducer = (prevState, action) => {
+    switch (action.type) {
+      case 'RETRIEVE_TOKEN':
+        return {
+          ...prevState,
+          userToken: action.token,
+          isLoading: false
+        }
+
+      case 'LOGIN':
+        return {
+          ...prevState,
+          userName: action.id,
+          userToken: action.token,
+          isLoading: false
+        }
+
+      case 'LOGOUT':
+        return {
+          ...prevState,
+          userName: null,
+          userToken: null,
+          isLoading: false
+        }
+
+      case 'REGISTER':
+        return {
+          ...prevState,
+          userName: action.id,
+          userToken: action.token,
+          isLoading: false
+        }
+    }
+  }
+
+  const [loginState, dispatch] = React.useReducer(loginReducer, initialLoginState)
 
   // Simulating loading screen -- Check in 1000 ms if user is logged in or not
   React.useEffect(() => {
     setTimeout(() => {
-      setIsLoading(false)
+      dispatch({
+        type: 'RETRIEVE_TOKEN',
+        token: 'ajsdnad'
+      })
     }, 1000)
   }, [])
 
   // Hnadle auth operations
   const authContext = React.useMemo(() => ({
-    signIn: () => {
-      setUserToken('abcdefghij')
-      setIsLoading(false)
+
+    // API calling for signIn
+    signIn: (userName, password) => {
+      // setUserToken('abcdefghij')
+      // setIsLoading(false)
+      let userToken
+      userName = null
+
+      if (userName == 'user' && password == 'pass') {
+        userToken = 'asdasdasd'
+      }
+
+      dispatch({
+        type: 'LOGIN',
+        id: userName,
+        token: userToken
+      })
     },
 
     signOut: () => {
-      setUserToken(null)
-      setIsLoading(false)
+      // setUserToken(null)
+      // setIsLoading(false)
+      dispatch({
+        type: 'LOGOUT',
+      })
     },
 
     signUp: () => {
@@ -49,7 +112,7 @@ const App = () => {
   }), [])
 
   // If screen isLoading is set to true, display a nice spinner
-  if (isLoading) {
+  if (loginState.isLoading) {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <ActivityIndicator
@@ -62,7 +125,7 @@ const App = () => {
   return (
     <AuthContext.Provider value={authContext}>
       <NavigationContainer>
-        {userToken !== null ? ( //If userToken is not NULL
+        {loginState.userToken !== null ? ( //If userToken is not NULL
           <Drawer.Navigator
             initialRouteName="Inicio"
             drawerContent={props => <DrawerContent {...props} />}>
