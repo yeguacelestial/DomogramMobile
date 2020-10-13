@@ -24,6 +24,16 @@ import { MaterialCommunityIcons } from '@expo/vector-icons'
 
 
 const DrawerContent = (props) => {
+
+    // Dark mode state
+    const [isDarkTheme, setIsDarkTheme] = React.useState(false)
+
+    const toggleTheme = () => {
+        // Activate/deactivate dark theme
+        setIsDarkTheme(!isDarkTheme)
+    }
+
+
     return (
         <View style={{ flex: 1 }}>
             <DrawerContentScrollView {...props}>
@@ -59,8 +69,88 @@ const DrawerContent = (props) => {
                             </View>
 
                         </View>
-
                     </View>
+
+                    {/* Drawer items */}
+                    <Drawer.Section>
+                        <DrawerItem
+                            icon={({ color, size }) => (
+                                <MaterialCommunityIcons
+                                    name="home-outline"
+                                    color={color}
+                                    size={size}
+                                />
+                            )}
+                            label="Inicio"
+                            onPress={() => { }}
+                        />
+
+                        <DrawerItem
+                            icon={({ color, size }) => (
+                                <MaterialCommunityIcons
+                                    name="account-outline"
+                                    color={color}
+                                    size={size}
+                                />
+                            )}
+                            label="Perfil"
+                            onPress={() => { }}
+                        />
+
+                        <DrawerItem
+                            icon={({ color, size }) => (
+                                <MaterialCommunityIcons
+                                    name="bookmark-outline"
+                                    color={color}
+                                    size={size}
+                                />
+                            )}
+                            label="Bookmarks"
+                            onPress={() => { }}
+                        />
+
+                        <DrawerItem
+                            icon={({ color, size }) => (
+                                <MaterialCommunityIcons
+                                    name="settings-outline"
+                                    color={color}
+                                    size={size}
+                                />
+                            )}
+                            label="Ajustes"
+                            onPress={() => { }}
+                        />
+
+                        <DrawerItem
+                            icon={({ color, size }) => (
+                                <MaterialCommunityIcons
+                                    name="account-check-outline"
+                                    color={color}
+                                    size={size}
+                                />
+                            )}
+                            label="Soporte"
+                            onPress={() => { }}
+                        />
+                    </Drawer.Section>
+
+                    {/* Preferencias */}
+                    <Drawer.Section title="Preferencias">
+
+                        {/* Opcion 'Modo oscuro' */}
+                        <TouchableRipple onPress={() => { toggleTheme() }}>
+                            <View style={styles.preference}>
+                                <Text>Modo oscuro</Text>
+
+                                {/* Switch modo oscuro */}
+                                <View pointerEvents="none">
+                                    <Switch value={isDarkTheme} />
+                                </View>
+
+                            </View>
+                        </TouchableRipple>
+
+                    </Drawer.Section>
 
                 </View>
             </DrawerContentScrollView>
@@ -76,12 +166,10 @@ const DrawerContent = (props) => {
                             size={size}
                         />
                     )}
-                    label="Sign Out"
+                    label="Cerrar sesión"
                     onPress={() => { }}
                 />
             </Drawer.Section>
-
-
         </View>
     )
 }
