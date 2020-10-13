@@ -22,17 +22,21 @@ import {
 
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
+import { AuthContext } from '../components/context'
+
 
 const DrawerContent = (props) => {
 
     // Dark mode state
     const [isDarkTheme, setIsDarkTheme] = React.useState(false)
 
+    // Authorization context object
+    const { signOut } = React.useContext(AuthContext)
+
     const toggleTheme = () => {
         // Activate/deactivate dark theme
         setIsDarkTheme(!isDarkTheme)
     }
-
 
     return (
         <View style={{ flex: 1 }}>
@@ -157,7 +161,7 @@ const DrawerContent = (props) => {
                         />
                     )}
                     label="Cerrar sesión"
-                    onPress={() => { }}
+                    onPress={() => { signOut() }}
                 />
             </Drawer.Section>
         </View>

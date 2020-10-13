@@ -46,7 +46,7 @@ const App = () => {
       setUserToken('abcdefghij')
       setIsLoading(false)
     }
-  }))
+  }), [])
 
   // If screen isLoading is set to true, display a nice spinner
   if (isLoading) {
@@ -71,7 +71,7 @@ const App = () => {
 
           </Drawer.Navigator>
         )
-          : // Else, show RootStack
+          : // Else (if userToken is NULL), show RootStack
           <RootStackScreen />
         }
 
