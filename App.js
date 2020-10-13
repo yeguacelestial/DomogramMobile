@@ -5,6 +5,8 @@ import { View, Text, ActivityIndicator } from 'react-native'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import { NavigationContainer } from '@react-navigation/native'
 
+import AyncStorage from '@react-native-community/async-storage'
+
 import RootStackScreen from './screens/RootStackScreen'
 
 // Bottom tab navigator
@@ -15,6 +17,7 @@ import DrawerContent from './screens/DrawerContent'
 
 // Authentication context
 import { AuthContext } from './components/context'
+import AsyncStorage from '@react-native-community/async-storage'
 
 
 const Drawer = createDrawerNavigator()
@@ -66,12 +69,20 @@ const App = () => {
 
   const [loginState, dispatch] = React.useReducer(loginReducer, initialLoginState)
 
-  // Simulating loading screen -- Check in 1000 ms if user is logged in or not
   React.useEffect(() => {
-    setTimeout(() => {
+    setTimeout(async () => {
+      let userToken
+      userToken = null
+
+      try {
+        userToken = await AsyncStorage.getItem('userToken')
+      } catch (e) {
+        console.log(e)
+      }
+
       dispatch({
         type: 'RETRIEVE_TOKEN',
-        token: 'ajsdnad'
+        token: userToken
       })
     }, 1000)
   }, [])
@@ -80,14 +91,20 @@ const App = () => {
   const authContext = React.useMemo(() => ({
 
     // API calling for signIn
-    signIn: (userName, password) => {
+    signIn: async (userName, password) => {
       // setUserToken('abcdefghij')
       // setIsLoading(false)
       let userToken
       userToken = null
 
       if (userName == 'user' && password == 'pass') {
-        userToken = 'asdasdasd'
+        try {
+          userToken = 'asdasdasd'
+          await AsyncStorage.setItem('userToken', userToken)
+        } catch (e) {
+          console.log(e)
+        }
+
       }
 
       dispatch({
@@ -97,9 +114,15 @@ const App = () => {
       })
     },
 
-    signOut: () => {
+    // Removing userToken from async storage
+    signOut: async () => {
       // setUserToken(null)
       // setIsLoading(false)
+      try {
+        await AsyncStorage.removeItem('userToken')
+      } catch (e) {
+        console.log(e)
+      }
       dispatch({
         type: 'LOGOUT',
       })

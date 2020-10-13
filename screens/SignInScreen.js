@@ -211,7 +211,7 @@ const SignInScreen = ({ navigation }) => {
                         style={styles.signIn}
                         // onPress={() => handleLoginForm({ email: data.email, password: data.password })}
                         // onPress={() => { signIn() }}
-                        onPress={() => { loginHandle(data.username, data.password) }}
+                        onPress={() => { loginHandle(data.email, data.password) }}
                     >
                         <LinearGradient
                             colors={['#08d4c4', '#01ab9d']}
