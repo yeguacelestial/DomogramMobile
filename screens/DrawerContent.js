@@ -41,8 +41,27 @@ const DrawerContent = (props) => {
                                 <Title style={styles.title}>Carlos Nava</Title>
                                 <Caption style={styles.caption}>carlosnava@hola.com</Caption>
                             </View>
+
                         </View>
+
+                        <View style={styles.row}>
+
+                            {/* Following section */}
+                            <View style={styles.section}>
+                                <Paragraph style={[styles.paragraph, styles.caption]}>80</Paragraph>
+                                <Caption style={styles.caption}>Following</Caption>
+                            </View>
+
+                            {/* Followers section */}
+                            <View style={styles.section}>
+                                <Paragraph style={[styles.paragraph, styles.caption]}>123</Paragraph>
+                                <Caption style={styles.caption}>Followers</Caption>
+                            </View>
+
+                        </View>
+
                     </View>
+
                 </View>
             </DrawerContentScrollView>
 
