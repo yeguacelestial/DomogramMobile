@@ -20,6 +20,8 @@ import * as Animatable from 'react-native-animatable'
 
 import { domogram_api_endpoint } from './config'
 
+import { AuthContext } from '../components/context'
+
 
 const SignInScreen = ({ navigation }) => {
 
@@ -30,6 +32,9 @@ const SignInScreen = ({ navigation }) => {
         check_textInputChange: false,
         secureTextEntry: true
     })
+
+    /* Authorization context */
+    const { signIn } = React.useContext(AuthContext)
 
     /* Functions */
 
@@ -201,7 +206,8 @@ const SignInScreen = ({ navigation }) => {
                 <View style={styles.button}>
                     <TouchableOpacity
                         style={styles.signIn}
-                        onPress={() => handleLoginForm({ email: data.email, password: data.password })}
+                        // onPress={() => handleLoginForm({ email: data.email, password: data.password })}
+                        onPress={() => { signIn() }}
                     >
                         <LinearGradient
                             colors={['#08d4c4', '#01ab9d']}
