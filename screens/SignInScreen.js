@@ -114,6 +114,9 @@ const SignInScreen = ({ navigation }) => {
         }
     }
 
+    const loginHandle = (username, password) => {
+        signIn(username, password)
+    }
 
     return (
         <View style={styles.container}>
@@ -207,7 +210,8 @@ const SignInScreen = ({ navigation }) => {
                     <TouchableOpacity
                         style={styles.signIn}
                         // onPress={() => handleLoginForm({ email: data.email, password: data.password })}
-                        onPress={() => { signIn() }}
+                        // onPress={() => { signIn() }}
+                        onPress={() => { loginHandle(data.username, data.password) }}
                     >
                         <LinearGradient
                             colors={['#08d4c4', '#01ab9d']}

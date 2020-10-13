@@ -84,7 +84,7 @@ const App = () => {
       // setUserToken('abcdefghij')
       // setIsLoading(false)
       let userToken
-      userName = null
+      userToken = null
 
       if (userName == 'user' && password == 'pass') {
         userToken = 'asdasdasd'
