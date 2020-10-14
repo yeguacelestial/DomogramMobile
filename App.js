@@ -1,11 +1,16 @@
 import React from 'react'
 
-import { View, Text, ActivityIndicator } from 'react-native'
+import {
+  View,
+  Text,
+  ActivityIndicator,
+  Alert
+} from 'react-native'
 
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import { NavigationContainer } from '@react-navigation/native'
 
-import AyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-community/async-storage'
 
 import RootStackScreen from './screens/RootStackScreen'
 
@@ -17,14 +22,13 @@ import DrawerContent from './screens/DrawerContent'
 
 // Authentication context
 import { AuthContext } from './components/context'
-import AsyncStorage from '@react-native-community/async-storage'
+
+import { domogram_api_endpoint } from './screens/config'
 
 
 const Drawer = createDrawerNavigator()
 
 const App = () => {
-  // const [isLoading, setIsLoading] = React.useState(true)
-  // const [userToken, setUserToken] = React.useState(null)
 
   const initialLoginState = {
     isLoading: true,
@@ -92,19 +96,54 @@ const App = () => {
 
     // API calling for signIn
     signIn: async (userName, password) => {
-      // setUserToken('abcdefghij')
-      // setIsLoading(false)
       let userToken
       userToken = null
 
-      if (userName == 'user' && password == 'pass') {
+      if (userName.length > 0 && password.length > 0) {
         try {
-          userToken = 'asdasdasd'
+          userToken = 'thisisageneratedToken!'
           await AsyncStorage.setItem('userToken', userToken)
+
+          const result = await fetch(`${domogram_api_endpoint}/signin`, {
+            method: 'post',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              email: userName,
+              password: password
+            })
+          })
+
+          const response = await result.json()
+          const response_value = Object.values(response)[0]
+
+          // Handling different types of responses
+          if (result.ok && response.success) {
+            console.log(JSON.stringify(response))
+            Alert.alert('¡Hola!', response_value)
+
+          } else if (result.ok && response.error) {
+            console.log(JSON.stringify(response))
+            Alert.alert('Algo salió mal', response_value)
+            return
+
+          } else {
+            console.log(JSON.stringify(response))
+            Alert.alert('Algo salió mal', 'Hay un problema con la API. Por favor, contacta al desarrollador.')
+            return
+          }
+
         } catch (e) {
           console.log(e)
+          Alert.alert('Algo salió mal', 'Whoops! Algo salió mal al enviar tus datos.')
+          return
         }
+      }
 
+      else {
+        Alert.alert('¿Se te olvida algo?', 'Por favor, llena los campos requeridos.')
       }
 
       dispatch({

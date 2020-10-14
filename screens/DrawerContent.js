@@ -1,7 +1,8 @@
 import React from 'react'
 import {
     View,
-    StyleSheet
+    StyleSheet,
+    Alert
 } from 'react-native'
 
 import {
@@ -100,7 +101,10 @@ const DrawerContent = (props) => {
                                 />
                             )}
                             label="Perfil"
-                            onPress={() => { props.navigation.navigate('Movimiento') }}
+                            onPress={() => {
+                                // props.navigation.navigate('Movimiento') 
+                                Alert.alert("En progreso...", "El usuario podrá ver información sobre su perfil desde aquí.")
+                            }}
                         />
 
                         <DrawerItem
@@ -112,7 +116,10 @@ const DrawerContent = (props) => {
                                 />
                             )}
                             label="Ajustes"
-                            onPress={() => { props.navigation.navigate('Luces') }}
+                            onPress={() => {
+                                // props.navigation.navigate('Luces')
+                                Alert.alert("En progreso...", "La opción de Ajustes será útil para configurar información de la cuenta del usuario, así como también algunos parámetros relativos a la automatización del hogar.")
+                            }}
                         />
 
                         <DrawerItem
@@ -124,7 +131,10 @@ const DrawerContent = (props) => {
                                 />
                             )}
                             label="Soporte"
-                            onPress={() => { props.navigation.navigate('Temperatura y humedad') }}
+                            onPress={() => {
+                                // props.navigation.navigate('Temperatura y humedad')
+                                Alert.alert("En progreso...", "La vista de soporte servirá para poder contactar al desarrollador en caso de que el usuario tenga alguna duda.")
+                            }}
                         />
                     </Drawer.Section>
 
