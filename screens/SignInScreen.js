@@ -18,8 +18,6 @@ import { Entypo } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient'
 import * as Animatable from 'react-native-animatable'
 
-import { domogram_api_endpoint } from './config'
-
 import { AuthContext } from '../components/context'
 
 
@@ -73,45 +71,6 @@ const SignInScreen = ({ navigation }) => {
             // Set entry field to the opposite boolean
             secureTextEntry: !data.secureTextEntry
         })
-    }
-
-    // Handling Login fields
-    const handleLoginForm = async (form_data) => {
-        // If fields are not empty...
-        if (form_data.email.length > 0 && form_data.password.length > 0) {
-            const result = await fetch(`${domogram_api_endpoint}/signin`, {
-                method: 'post',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    email: form_data.email,
-                    password: form_data.password
-                })
-            })
-
-            const response = await result.json()
-            const response_value = Object.values(response)[0]
-
-            // Handling different types of responses
-            if (result.ok && response.success) {
-                console.log(JSON.stringify(response))
-                Alert.alert('¡Hola!', response_value)
-
-            } else if (result.ok && response.error) {
-                console.log(JSON.stringify(response))
-                Alert.alert('Algo salió mal', response_value)
-
-            } else {
-                console.log(JSON.stringify(response))
-                Alert.alert('Algo salió mal', 'Hay un problema con la API. Por favor, contacta al desarrollador.')
-            }
-        }
-
-        else {
-            alert("Por favor, llena los campos requeridos.")
-        }
     }
 
     const loginHandle = (username, password) => {

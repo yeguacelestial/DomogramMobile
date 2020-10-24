@@ -32,7 +32,7 @@ const App = () => {
 
   const initialLoginState = {
     isLoading: true,
-    userName: null,
+    email: null,
     userToken: null
   }
 
@@ -48,7 +48,7 @@ const App = () => {
       case 'LOGIN':
         return {
           ...prevState,
-          userName: action.id,
+          email: action.id,
           userToken: action.token,
           isLoading: false
         }
@@ -56,7 +56,7 @@ const App = () => {
       case 'LOGOUT':
         return {
           ...prevState,
-          userName: null,
+          email: null,
           userToken: null,
           isLoading: false
         }
@@ -64,7 +64,7 @@ const App = () => {
       case 'REGISTER':
         return {
           ...prevState,
-          userName: action.id,
+          email: action.id,
           userToken: action.token,
           isLoading: false
         }
@@ -95,11 +95,11 @@ const App = () => {
   const authContext = React.useMemo(() => ({
 
     // API calling for signIn
-    signIn: async (userName, password) => {
+    signIn: async (email, password) => {
       let userToken
       userToken = null
 
-      if (userName.length > 0 && password.length > 0) {
+      if (email.length > 0 && password.length > 0) {
         try {
           userToken = 'thisisageneratedToken!'
           await AsyncStorage.setItem('userToken', userToken)
@@ -111,7 +111,7 @@ const App = () => {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              email: userName,
+              email: email,
               password: password
             })
           })
@@ -148,7 +148,7 @@ const App = () => {
 
       dispatch({
         type: 'LOGIN',
-        id: userName,
+        id: email,
         token: userToken
       })
     },
