@@ -6,16 +6,18 @@ import {
     StyleSheet
 } from 'react-native'
 
+import * as Animatable from 'react-native-animatable'
+
 
 const HomeScreen = ({ navigation }) => {
     return (
-        <View style={styles.container}>
+        <Animatable.View style={styles.container} animation="fadeInUpBig">
             <Text>Home Screen</Text>
             <Button
                 title="Ir a pantalla de Movimiento"
                 onPress={() => navigation.navigate('Movimiento')}
             />
-        </View>
+        </Animatable.View>
     )
 }
 

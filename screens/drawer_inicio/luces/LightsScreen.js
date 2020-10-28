@@ -6,10 +6,12 @@ import {
     StyleSheet
 } from 'react-native'
 
+import * as Animatable from 'react-native-animatable'
+
 
 const LightsScreen = ({ navigation }) => {
     return (
-        <View style={styles.container}>
+        <Animatable.View style={styles.container} animation="fadeInUpBig">
             <Text>Luces Screen</Text>
             <Button
                 title="Ir a pantalla de Home"
@@ -31,7 +33,7 @@ const LightsScreen = ({ navigation }) => {
                 onPress={() => navigation.popToTop()}
             />
 
-        </View>
+        </Animatable.View>
     )
 }
 

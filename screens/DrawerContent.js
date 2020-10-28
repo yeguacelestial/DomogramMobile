@@ -53,8 +53,8 @@ const DrawerContent = (props) => {
                             />
 
                             <View style={{ marginLeft: 15, flexDirection: 'column' }}>
-                                <Title style={styles.title}>Carlos Nava</Title>
-                                <Caption style={styles.caption}>carlosnava@hola.com</Caption>
+                                <Title style={styles.title}>Domogram</Title>
+                                <Caption style={styles.caption}>Tu asistente doméstico</Caption>
                             </View>
 
                         </View>
@@ -63,15 +63,10 @@ const DrawerContent = (props) => {
 
                             {/* Following section */}
                             <View style={styles.section}>
-                                <Paragraph style={[styles.paragraph, styles.caption]}>80</Paragraph>
-                                <Caption style={styles.caption}>Following</Caption>
+                                <Paragraph style={[styles.paragraph, styles.caption]}>Desarrollado por</Paragraph>
+                                <Caption style={styles.caption}>Carlos Nava</Caption>
                             </View>
 
-                            {/* Followers section */}
-                            <View style={styles.section}>
-                                <Paragraph style={[styles.paragraph, styles.caption]}>123</Paragraph>
-                                <Caption style={styles.caption}>Followers</Caption>
-                            </View>
 
                         </View>
                     </View>

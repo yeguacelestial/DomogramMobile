@@ -91,7 +91,7 @@ const App = () => {
     }, 1000)
   }, [])
 
-  // Hnadle auth operations
+  // Handle auth operations
   const authContext = React.useMemo(() => ({
 
     // API calling for signIn
