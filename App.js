@@ -2,15 +2,24 @@ import React from 'react'
 
 import {
   View,
-  Text,
   ActivityIndicator,
   Alert
 } from 'react-native'
 
 import { createDrawerNavigator } from '@react-navigation/drawer'
-import { NavigationContainer } from '@react-navigation/native'
+import {
+  NavigationContainer,
+  DefaultTheme as NavigationDefaultTheme,
+  DarkTheme as NavigationDarkTheme
+} from '@react-navigation/native'
 
 import AsyncStorage from '@react-native-community/async-storage'
+
+import {
+  Provider as PaperProvider,
+  DefaultTheme as PaperDefaultTheme,
+  DarkTheme as PaperDarkTheme
+} from 'react-native-paper'
 
 import RootStackScreen from './screens/RootStackScreen'
 
@@ -30,11 +39,38 @@ const Drawer = createDrawerNavigator()
 
 const App = () => {
 
+  // Dark mode state
+  const [isDarkTheme, setIsDarkTheme] = React.useState(false)
+
   const initialLoginState = {
     isLoading: true,
     email: null,
     userToken: null
   }
+
+  const CustomDefaultTheme = {
+    ...NavigationDefaultTheme,
+    ...PaperDefaultTheme,
+    colors: {
+      ...NavigationDefaultTheme.colors,
+      ...PaperDefaultTheme.colors,
+      background: '#ffffff',
+      text: '#333333'
+    }
+  }
+
+  const CustomDarkTheme = {
+    ...NavigationDarkTheme,
+    ...PaperDarkTheme,
+    colors: {
+      ...NavigationDarkTheme.colors,
+      ...PaperDarkTheme.colors,
+      background: '#333333',
+      text: '#ffffff'
+    }
+  }
+
+  const theme = isDarkTheme ? CustomDarkTheme : CustomDefaultTheme
 
   const loginReducer = (prevState, action) => {
     switch (action.type) {
@@ -170,6 +206,10 @@ const App = () => {
     signUp: () => {
       setUserToken('abcdefghij')
       setIsLoading(false)
+    },
+
+    toggleTheme: () => {
+      setIsDarkTheme(isDarkTheme => !isDarkTheme)
     }
   }), [])
 
@@ -185,23 +225,25 @@ const App = () => {
   }
 
   return (
-    <AuthContext.Provider value={authContext}>
-      <NavigationContainer>
-        {loginState.userToken !== null ? ( //If userToken is not NULL
-          <Drawer.Navigator
-            initialRouteName="Inicio"
-            drawerContent={props => <DrawerContent {...props} />}>
+    <PaperProvider theme={theme}>
+      <AuthContext.Provider value={authContext}>
+        <NavigationContainer theme={theme}>
+          {loginState.userToken !== null ? ( //If userToken is not NULL
+            <Drawer.Navigator
+              initialRouteName="Inicio"
+              drawerContent={props => <DrawerContent {...props} />}>
 
-            <Drawer.Screen name="Inicio" component={MainTabScreen}></Drawer.Screen>
+              <Drawer.Screen name="Inicio" component={MainTabScreen}></Drawer.Screen>
 
-          </Drawer.Navigator>
-        )
-          : // Else (if userToken is NULL), show RootStack
-          <RootStackScreen />
-        }
+            </Drawer.Navigator>
+          )
+            : // Else (if userToken is NULL), show RootStack
+            <RootStackScreen />
+          }
 
-      </NavigationContainer>
-    </AuthContext.Provider>
+        </NavigationContainer>
+      </AuthContext.Provider>
+    </PaperProvider>
   )
 }
 

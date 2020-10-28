@@ -7,8 +7,9 @@ import {
     TouchableOpacity,
     TextInput,
     StatusBar,
-    Alert
 } from 'react-native'
+
+import { useTheme } from 'react-native-paper'
 
 // Expo Icons
 import { AntDesign } from '@expo/vector-icons';
@@ -30,6 +31,8 @@ const SignInScreen = ({ navigation }) => {
         check_textInputChange: false,
         secureTextEntry: true
     })
+
+    const { colors } = useTheme()
 
     /* Authorization context */
     const { signIn } = React.useContext(AuthContext)
@@ -89,22 +92,23 @@ const SignInScreen = ({ navigation }) => {
 
             {/* Footer */}
             <Animatable.View
-                style={styles.footer}
+                style={[styles.footer, { backgroundColor: colors.background }]}
                 animation="fadeInUpBig"
             >
 
                 {/* Correo electrónico field */}
-                <Text style={styles.text_footer}>Correo electrónico</Text>
+                <Text style={[styles.text_footer, { color: colors.text }]}>Correo electrónico</Text>
                 <View style={styles.action}>
                     <FontAwesome
                         name="user-o"
                         size={24}
-                        color="black" />
+                        color={colors.text} />
 
                     {/* Placeholder */}
                     <TextInput
                         placeholder="Tu correo aquí"
-                        style={styles.textInput}
+                        placeholderTextColor="#666666"
+                        style={[styles.textInput, { color: colors.text }]}
                         autoCapitalize="none"
                         onChangeText={(value) => textInputChange(value)}
                     />
@@ -125,21 +129,22 @@ const SignInScreen = ({ navigation }) => {
                 </View>
 
                 {/* Contraseña field */}
-                <Text style={[styles.text_footer, { marginTop: 35 }]}>
+                <Text style={[styles.text_footer, { marginTop: 35 }, { color: colors.text }]}>
                     Contraseña
                 </Text>
                 <View style={styles.action}>
                     <AntDesign
                         name="lock1"
                         size={24}
-                        color="green"
+                        color={colors.text}
                     />
 
                     {/* Placeholder */}
                     <TextInput
                         placeholder="Tu contraseña aquí"
+                        placeholderTextColor="#666666"
                         secureTextEntry={data.secureTextEntry ? true : false}
-                        style={styles.textInput}
+                        style={[styles.textInput, { color: colors.text }]}
                         autoCapitalize="none"
                         onChangeText={(value) => handlePasswordChange(value)}
                     />

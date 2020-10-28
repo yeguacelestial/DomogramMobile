@@ -11,8 +11,13 @@ import { LinearGradient } from 'expo-linear-gradient'
 import { AntDesign } from '@expo/vector-icons';
 import * as Animatable from 'react-native-animatable'
 
+import { useTheme } from '@react-navigation/native'
+
 
 const SplashScreen = ({ navigation }) => {
+
+    const { colors } = useTheme()
+
     return (
         <View style={styles.container}>
             {/* Header */}
@@ -28,11 +33,14 @@ const SplashScreen = ({ navigation }) => {
 
             {/* Footer */}
             <Animatable.View
-                style={styles.footer}
+                style={[
+                    styles.footer,
+                    { backgroundColor: colors.background }
+                ]}
                 animation="fadeInUpBig"
             >
-                <Text style={styles.title}>Domogram, tu asistente doméstico</Text>
-                <Text style={styles.text}>Accede para administrar tu hogar desde tu móvil</Text>
+                <Text style={[styles.title, { color: colors.text }]}>Domogram, tu asistente doméstico</Text>
+                <Text style={[styles.text, { color: colors.text }]}>Accede para administrar tu hogar desde tu móvil</Text>
 
                 {/* Botón 'Empieza' */}
                 <View style={styles.button}>

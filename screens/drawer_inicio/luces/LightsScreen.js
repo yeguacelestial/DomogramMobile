@@ -6,13 +6,16 @@ import {
     StyleSheet
 } from 'react-native'
 
-import * as Animatable from 'react-native-animatable'
+import { useTheme } from '@react-navigation/native'
 
 
 const LightsScreen = ({ navigation }) => {
+
+    const { colors } = useTheme()
+
     return (
-        <Animatable.View style={styles.container} animation="fadeInUpBig">
-            <Text>Luces Screen</Text>
+        <View style={styles.container}>
+            <Text style={{ color: colors.text }}>Luces Screen</Text>
             <Button
                 title="Ir a pantalla de Home"
                 onPress={() => navigation.navigate('Home')}
@@ -33,7 +36,7 @@ const LightsScreen = ({ navigation }) => {
                 onPress={() => navigation.popToTop()}
             />
 
-        </Animatable.View>
+        </View>
     )
 }
 

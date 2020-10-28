@@ -3,21 +3,24 @@ import {
     View,
     Text,
     Button,
-    StyleSheet
+    StyleSheet,
 } from 'react-native'
 
-import * as Animatable from 'react-native-animatable'
+import { useTheme } from '@react-navigation/native'
 
 
 const HomeScreen = ({ navigation }) => {
+
+    const { colors } = useTheme()
+
     return (
-        <Animatable.View style={styles.container} animation="fadeInUpBig">
-            <Text>Home Screen</Text>
+        <View style={styles.container}>
+            <Text style={{ color: colors.text }}>Home Screen</Text>
             <Button
                 title="Ir a pantalla de Movimiento"
                 onPress={() => navigation.navigate('Movimiento')}
             />
-        </Animatable.View>
+        </View>
     )
 }
 

@@ -6,6 +6,7 @@ import {
 } from 'react-native'
 
 import {
+    useTheme,
     Avatar,
     Title,
     Caption,
@@ -28,16 +29,10 @@ import { AuthContext } from '../components/context'
 
 const DrawerContent = (props) => {
 
-    // Dark mode state
-    const [isDarkTheme, setIsDarkTheme] = React.useState(false)
+    const paperTheme = useTheme()
 
     // Authorization context object
-    const { signOut } = React.useContext(AuthContext)
-
-    const toggleTheme = () => {
-        // Activate/deactivate dark theme
-        setIsDarkTheme(!isDarkTheme)
-    }
+    const { signOut, toggleTheme } = React.useContext(AuthContext)
 
     return (
         <View style={{ flex: 1 }}>
@@ -143,7 +138,7 @@ const DrawerContent = (props) => {
 
                                 {/* Switch modo oscuro */}
                                 <View pointerEvents="none">
-                                    <Switch value={isDarkTheme} />
+                                    <Switch value={paperTheme.dark} />
                                 </View>
 
                             </View>

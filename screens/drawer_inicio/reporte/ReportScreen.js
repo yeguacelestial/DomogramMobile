@@ -6,11 +6,16 @@ import {
     StyleSheet
 } from 'react-native'
 
+import { useTheme } from '@react-navigation/native'
+
 
 const ReportScreen = ({ navigation }) => {
+
+    const { colors } = useTheme()
+
     return (
         <View style={styles.container}>
-            <Text>Reporte Screen</Text>
+            <Text style={{ color: colors.text }}>Reporte Screen</Text>
             <Button
                 title="Ir a pantalla de Home"
                 onPress={() => navigation.navigate('Home')}
