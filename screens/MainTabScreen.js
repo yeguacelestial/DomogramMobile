@@ -73,7 +73,7 @@ const MainTabScreen = () => {
                 }}
             />
 
-            <Tab.Screen
+            {/* <Tab.Screen
                 name="Reporte"
                 component={ReportStackScreen}
                 options={{
@@ -83,7 +83,7 @@ const MainTabScreen = () => {
                         <FontAwesome5 name="list-alt" size={24} color={color} />
                     )
                 }}
-            />
+            /> */}
 
         </Tab.Navigator>
     )

@@ -15,25 +15,17 @@ const TemperatureScreen = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Text style={{ color: colors.text }}>Temperatura y Humedad Screen</Text>
-            <Button
-                title="Ir a pantalla de Home"
-                onPress={() => navigation.navigate('Home')}
-            />
+            <Text style={[styles.title, { color: colors.text }]}>Temperatura y humedad</Text>
+
+            <Text style={[styles.subtitle, { color: colors.text }]}>Monitorea la temperatura interior y el porcentaje de humedad.</Text>
+
+            <Text style={[styles.subtitle, { color: colors.text }]}>Temperatura: 10°C</Text>
+
+            <Text style={[styles.subtitle, { color: colors.text }]}>Humedad: 50%</Text>
 
             <Button
-                title="Ir a pantalla de Temperatura y Humedad...de nuevo"
-                onPress={() => navigation.push('Temperatura y Humedad')}
-            />
-
-            <Button
-                title="Regresar"
-                onPress={() => navigation.goBack()}
-            />
-
-            <Button
-                title="Ir a la primer pantalla"
-                onPress={() => navigation.popToTop()}
+                title="Actualizar"
+            // onPress={() => navigation.popToTop()}
             />
 
         </View>
@@ -44,7 +36,25 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center'
+        // justifyContent: 'center'
+    },
+
+    title: {
+        fontSize: 30,
+        fontWeight: "bold",
+        textAlign: "center",
+        paddingTop: 50,
+    },
+
+    subtitle: {
+        fontSize: 20,
+        textAlign: "center",
+    },
+
+    text: {
+        fontSize: 15,
+        textAlign: "center",
+        paddingTop: 20,
     }
 })
 

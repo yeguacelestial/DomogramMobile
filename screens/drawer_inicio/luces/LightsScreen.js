@@ -15,25 +15,39 @@ const LightsScreen = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Text style={{ color: colors.text }}>Luces Screen</Text>
+            <Text style={[styles.title, { color: colors.text }]}>Luces del hogar</Text>
+
+            <Text style={[styles.subtitle, { color: colors.text }]}>Administra la luz de tu hogar con los siguientes botones para encender y apagar las luces.</Text>
+
             <Button
-                title="Ir a pantalla de Home"
-                onPress={() => navigation.navigate('Home')}
+                title="Cuarto"
             />
 
             <Button
-                title="Ir a pantalla de Luces...de nuevo"
-                onPress={() => navigation.push('Luces')}
+                title="Estancia"
             />
 
             <Button
-                title="Regresar"
-                onPress={() => navigation.goBack()}
+                title="Baño"
             />
 
             <Button
-                title="Ir a la primer pantalla"
-                onPress={() => navigation.popToTop()}
+                title="Cocina"
+            />
+
+            <Button
+                title="Entrada"
+            />
+
+            <Button
+                title="Comedor"
+            />
+
+            <Text style={[styles.text, { color: colors.text }]}>Pulsa el siguiente botón para encender y apagar todas las luces a la vez.</Text>
+
+            <Button
+                title="Encender todas las luces"
+            // onPress={() => navigation.popToTop()}
             />
 
         </View>
@@ -44,7 +58,25 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center'
+        // justifyContent: 'center'
+    },
+
+    title: {
+        fontSize: 30,
+        fontWeight: "bold",
+        textAlign: "center",
+        paddingTop: 50,
+    },
+
+    subtitle: {
+        fontSize: 20,
+        textAlign: "center",
+    },
+
+    text: {
+        fontSize: 15,
+        textAlign: "center",
+        paddingTop: 20,
     }
 })
 
