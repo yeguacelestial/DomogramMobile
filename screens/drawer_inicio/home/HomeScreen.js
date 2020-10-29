@@ -7,7 +7,7 @@ import {
 } from 'react-native'
 
 import { useTheme } from '@react-navigation/native'
-import Image from 'react-native-remote-svg'
+import HomeOff from '../../../resources/no_meeting_room-24px.svg'
 
 
 const HomeScreen = ({ navigation }) => {
@@ -20,17 +20,15 @@ const HomeScreen = ({ navigation }) => {
 
             <Text style={[styles.subtitle, { color: colors.text }]}>La plataforma para gestionar tu hogar desde cualquier parte del mundo</Text>
 
-            <Image
-                source={require('../../../resources/no_meeting_room-24px.svg')}
-                style={{ width: 200, height: 200, color: colors.text }}
+            {/* Home Icon */}
+            <HomeOff
+                width={200}
+                height={200}
+                style={{ color: colors.text }}
             />
 
             <Text style={[styles.text, { color: colors.text }]}>Abrir el portón principal para una mejor experiencia con Domogram.</Text>
 
-            {/* <Button
-                title="Ir a pantalla de Movimiento"
-                onPress={() => navigation.navigate('Movimiento')}
-            /> */}
             <Button
                 title="Abrir casa"
             // onPress={() => navigation.navigate('Movimiento')}
