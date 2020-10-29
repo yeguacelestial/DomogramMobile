@@ -10,6 +10,8 @@ import {
     Alert
 } from 'react-native'
 
+import { useTheme } from 'react-native-paper'
+
 // Expo Icons
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
@@ -32,6 +34,8 @@ const SignUpScreen = ({ navigation }) => {
         secureTextEntry: true,
         confirm_secureTextEntry: true,
     })
+
+    const { colors } = useTheme()
 
     /* Functions */
 
@@ -152,22 +156,23 @@ const SignUpScreen = ({ navigation }) => {
 
             {/* Footer */}
             <Animatable.View
-                style={styles.footer}
+                style={[styles.footer, { backgroundColor: colors.background }]}
                 animation="fadeInUpBig"
             >
 
                 {/* Correo electrónico field */}
-                <Text style={styles.text_footer}>Correo electrónico</Text>
+                <Text style={[styles.text_footer, { color: colors.text }]}>Correo electrónico</Text>
                 <View style={styles.action}>
                     <FontAwesome
                         name="user-o"
                         size={24}
-                        color="black" />
+                        color={colors.text} />
 
                     {/* Placeholder */}
                     <TextInput
                         placeholder="Tu correo aquí"
-                        style={styles.textInput}
+                        placeholderTextColor="#666666"
+                        style={[styles.textInput, { color: colors.text }]}
                         autoCapitalize="none"
                         onChangeText={(value) => textInputChange(value)}
                     />
@@ -188,21 +193,22 @@ const SignUpScreen = ({ navigation }) => {
                 </View>
 
                 {/* Contraseña field */}
-                <Text style={[styles.text_footer, { marginTop: 35 }]}>
+                <Text style={[styles.text_footer, { color: colors.text, marginTop: 35 }]}>
                     Contraseña
                 </Text>
                 <View style={styles.action}>
                     <AntDesign
                         name="lock1"
                         size={24}
-                        color="green"
+                        color={colors.text}
                     />
 
                     {/* Placeholder */}
                     <TextInput
                         placeholder="Tu contraseña aquí"
+                        placeholderTextColor="#666666"
                         secureTextEntry={data.secureTextEntry ? true : false}
-                        style={styles.textInput}
+                        style={[styles.textInput, { color: colors.text }]}
                         autoCapitalize="none"
                         onChangeText={(value) => handlePasswordChange(value)}
                     />
@@ -228,21 +234,22 @@ const SignUpScreen = ({ navigation }) => {
                 </View>
 
                 {/* Confirmar contraseña field */}
-                <Text style={[styles.text_footer, { marginTop: 35 }]}>
+                <Text style={[styles.text_footer, { color: colors.text, marginTop: 35 }]}>
                     Confirmar contraseña
                 </Text>
                 <View style={styles.action}>
                     <AntDesign
                         name="lock1"
                         size={24}
-                        color="green"
+                        color={colors.text}
                     />
 
                     {/* Placeholder */}
                     <TextInput
                         placeholder="Confirma tu contraseña aquí"
+                        placeholderTextColor="#666666"
                         secureTextEntry={data.confirm_secureTextEntry ? true : false}
-                        style={styles.textInput}
+                        style={[styles.textInput, { color: colors.text }]}
                         autoCapitalize="none"
                         onChangeText={(value) => handleConfirmPasswordChange(value)}
                     />
