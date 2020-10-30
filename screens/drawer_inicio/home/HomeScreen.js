@@ -2,11 +2,13 @@ import React from 'react'
 import {
     View,
     Text,
-    Button,
     StyleSheet,
 } from 'react-native'
 
 import { useTheme } from '@react-navigation/native'
+import AwesomeButton from 'react-native-really-awesome-button';
+
+// SVG Components
 import HomeOff from '../../../resources/no_meeting_room-24px.svg'
 
 
@@ -24,15 +26,23 @@ const HomeScreen = ({ navigation }) => {
             <HomeOff
                 width={200}
                 height={200}
-                style={{ color: colors.text }}
+                style={{ color: colors.text, paddingTop: 250 }}
             />
 
+            <Text style={[styles.homeStateText, { color: colors.text }]}>La casa está cerrada.</Text>
             <Text style={[styles.text, { color: colors.text }]}>Abrir el portón principal para una mejor experiencia con Domogram.</Text>
 
-            <Button
-                title="Abrir casa"
-            // onPress={() => navigation.navigate('Movimiento')}
-            />
+            <AwesomeButton
+                type="primary"
+                progress
+                onPress={next => {
+                    /* Do something */
+                    // alert("Abriendo la casa...")
+                    next()
+                }}
+            >
+                Abrir casa
+            </AwesomeButton>
         </View>
     )
 }
@@ -60,7 +70,14 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 15,
         textAlign: "center",
+        fontWeight: "bold",
         paddingTop: 20,
+    },
+
+    homeStateText: {
+        fontSize: 25,
+        fontWeight: 'bold',
+        marginTop: -20
     }
 })
 
