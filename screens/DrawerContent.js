@@ -82,7 +82,7 @@ const DrawerContent = (props) => {
                             }}
                         />
 
-                        <DrawerItem
+                        {/* <DrawerItem
                             icon={({ color, size }) => (
                                 <MaterialCommunityIcons
                                     name="account-outline"
@@ -95,9 +95,9 @@ const DrawerContent = (props) => {
                                 // props.navigation.navigate('Movimiento') 
                                 Alert.alert("En progreso...", "El usuario podrá ver información sobre su perfil desde aquí.")
                             }}
-                        />
+                        /> */}
 
-                        <DrawerItem
+                        {/* <DrawerItem
                             icon={({ color, size }) => (
                                 <MaterialCommunityIcons
                                     name="settings-outline"
@@ -110,7 +110,7 @@ const DrawerContent = (props) => {
                                 // props.navigation.navigate('Luces')
                                 Alert.alert("En progreso...", "La opción de Ajustes será útil para configurar información de la cuenta del usuario, así como también algunos parámetros relativos a la automatización del hogar.")
                             }}
-                        />
+                        /> */}
 
                         <DrawerItem
                             icon={({ color, size }) => (

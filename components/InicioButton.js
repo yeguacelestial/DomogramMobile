@@ -5,8 +5,6 @@ import { useTheme } from '@react-navigation/native'
 
 import AwesomeButtonCartman from 'react-native-really-awesome-button/src/themes/cartman';
 
-import HomeOff from '../resources/no_meeting_room-24px.svg'
-
 
 const InicioButton = ({
     customBackgroundColor,
