@@ -6,7 +6,6 @@ import {
 } from 'react-native'
 
 import { useTheme } from '@react-navigation/native'
-import AwesomeButtonCartman from 'react-native-really-awesome-button/src/themes/cartman';
 
 // Components
 import InicioButton from '../../../components/InicioButton'
@@ -18,6 +17,7 @@ import HomeOff from '../../../resources/no_meeting_room-24px.svg'
 const HomeScreen = ({ navigation }) => {
 
     const { colors } = useTheme()
+
 
     return (
         <View style={styles.container}>
@@ -37,7 +37,13 @@ const HomeScreen = ({ navigation }) => {
 
             <InicioButton
                 customBackgroundColor="#009387"
-                customText="Hola"
+                customText={"Abrir porton principal"}
+                customImage={<HomeOff
+                    width={40}
+                    height={40}
+                    style={{ color: 'white' }}
+                />}
+
                 handlePress={next => {
                     alert("Abriendo casa...")
                     next()

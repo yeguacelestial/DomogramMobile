@@ -1,11 +1,20 @@
 import React from 'react'
+import { Text } from 'react-native'
 
 import { useTheme } from '@react-navigation/native'
 
 import AwesomeButtonCartman from 'react-native-really-awesome-button/src/themes/cartman';
 
+import HomeOff from '../resources/no_meeting_room-24px.svg'
 
-const InicioButton = ({ customBackgroundColor, customText, handlePress }) => {
+
+const InicioButton = ({
+    customBackgroundColor,
+    customImage,
+    customText,
+    handlePress
+}) => {
+
     const { colors } = useTheme()
 
     return (
@@ -18,8 +27,11 @@ const InicioButton = ({ customBackgroundColor, customText, handlePress }) => {
             progress
             onPress={handlePress}
         >
-            { customText}
-        </AwesomeButtonCartman >
+            {customImage}
+            <Text style={{ color: '#fff', fontWeight: 'bold', paddingLeft: 15 }}>
+                {customText}
+            </Text>
+        </AwesomeButtonCartman>
     )
 }
 
