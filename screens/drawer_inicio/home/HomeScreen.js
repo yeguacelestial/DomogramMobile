@@ -6,7 +6,7 @@ import {
 } from 'react-native'
 
 import { useTheme } from '@react-navigation/native'
-import AwesomeButton from 'react-native-really-awesome-button';
+import AwesomeButtonCartman from 'react-native-really-awesome-button/src/themes/cartman';
 
 // SVG Components
 import HomeOff from '../../../resources/no_meeting_room-24px.svg'
@@ -30,19 +30,22 @@ const HomeScreen = ({ navigation }) => {
             />
 
             <Text style={[styles.homeStateText, { color: colors.text }]}>La casa está cerrada.</Text>
-            <Text style={[styles.text, { color: colors.text }]}>Abrir el portón principal para una mejor experiencia con Domogram.</Text>
+            <Text style={[styles.text, { color: colors.text, paddingBottom: 10 }]}>Abrir el portón principal para una mejor experiencia con Domogram.</Text>
 
-            <AwesomeButton
+            <AwesomeButtonCartman
+                textColor="white"
+                backgroundColor="#009387"
+                width={250}
                 type="primary"
                 progress
                 onPress={next => {
                     /* Do something */
-                    // alert("Abriendo la casa...")
+                    alert("Abriendo la casa...")
                     next()
                 }}
             >
-                Abrir casa
-            </AwesomeButton>
+                Pulsa aquí para abrir la casa
+            </AwesomeButtonCartman>
         </View>
     )
 }
@@ -77,7 +80,7 @@ const styles = StyleSheet.create({
     homeStateText: {
         fontSize: 25,
         fontWeight: 'bold',
-        marginTop: -20
+        marginTop: -30
     }
 })
 
