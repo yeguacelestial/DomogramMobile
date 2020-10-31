@@ -49,7 +49,7 @@ const HomeScreen = ({ navigation }) => {
                 />}
 
                 handlePress={next => {
-                    alert("Abriendo casa...")
+                    // alert("Abriendo casa...")
                     next()
                     // setTimeout(() => alert("Listo"), 2000)
                 }}

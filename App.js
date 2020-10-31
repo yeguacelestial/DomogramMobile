@@ -3,7 +3,8 @@ import React from 'react'
 import {
   View,
   ActivityIndicator,
-  Alert
+  Alert,
+  LogBox
 } from 'react-native'
 
 import { createDrawerNavigator } from '@react-navigation/drawer'
@@ -34,6 +35,8 @@ import { AuthContext } from './components/context'
 
 import { domogram_api_endpoint } from './screens/config'
 
+// DEBUG ON EXPO
+LogBox.ignoreAllLogs(true)
 
 const Drawer = createDrawerNavigator()
 
