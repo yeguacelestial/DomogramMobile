@@ -8,6 +8,12 @@ import {
 
 import { useTheme } from '@react-navigation/native'
 
+// Components
+import InicioButton from '../../../components/InicioButton'
+
+// SVG Components
+import MovimientoIcono from '../../../resources/track_changes-24px.svg'
+import RefreshIcono from '../../../resources/refresh-24px.svg'
 
 const MovementScreen = ({ navigation }) => {
 
@@ -17,13 +23,30 @@ const MovementScreen = ({ navigation }) => {
         <View style={styles.container}>
             <Text style={[styles.title, { color: colors.text }]}>Sensor de movimiento</Text>
 
-            <Text style={[styles.subtitle, { color: colors.text }]}>El sensor ultrasónico calcula la distancia a la que hay movimiento con tecnología de ultrasonido.</Text>
+            <Text style={[styles.subtitle, { color: colors.text }]}>Distancia a la que hay movimiento, calculada a través de ultrasonido.</Text>
 
-            <Text style={[styles.text, { color: colors.text }]}>Ultima distancia capturada: 3 metros.</Text>
+            <MovimientoIcono
+                width={200}
+                height={200}
+                style={{ color: '#1f65ff', paddingTop: 250 }}
+            />
 
-            <Button
-                title="Refrescar distancia"
-            // onPress={() => navigation.popToTop()}
+            <Text style={[styles.distanciaTexto, { color: colors.text, paddingBottom: 15 }]}>Ultima distancia: 3 metros.</Text>
+
+            <InicioButton
+                customBackgroundColor="#1f65ff"
+                customText={"Refrescar distancia"}
+                customImage={<RefreshIcono
+                    width={40}
+                    height={40}
+                    style={{ color: 'white' }}
+                />}
+
+                handlePress={next => {
+                    alert("Refrescando distancia...")
+                    next()
+                    // setTimeout(() => alert("Listo"), 2000)
+                }}
             />
 
         </View>
@@ -34,7 +57,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        // justifyContent: 'center'
+        // justifyContent: 'center',
     },
 
     title: {
@@ -52,8 +75,16 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 15,
         textAlign: "center",
+        fontWeight: "bold",
         paddingTop: 20,
+    },
+
+    distanciaTexto: {
+        fontSize: 20,
+        textAlign: "center",
+        fontWeight: "bold",
     }
+
 })
 
 export default MovementScreen

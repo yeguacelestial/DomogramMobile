@@ -3,6 +3,7 @@ import {
     View,
     Text,
     StyleSheet,
+    // StatusBar
 } from 'react-native'
 
 import { useTheme } from '@react-navigation/native'
@@ -12,33 +13,36 @@ import InicioButton from '../../../components/InicioButton'
 
 // SVG Components
 import HomeOff from '../../../resources/no_meeting_room-24px.svg'
+import HomeOn from '../../../resources/meeting_room-24px.svg'
 
 
 const HomeScreen = ({ navigation }) => {
 
     const { colors } = useTheme()
 
+    // const theme = useTheme()
 
     return (
         <View style={styles.container}>
-            <Text style={[styles.title, { color: colors.text }]}>Bienvenido a Domogram</Text>
+            {/* <StatusBar barStyle={theme.dark ? "light-content" : "dark-content"} /> */}
+            <Text style={[styles.title, { color: colors.text }]}>Domogram</Text>
 
-            <Text style={[styles.subtitle, { color: colors.text }]}>La plataforma para gestionar tu hogar desde cualquier parte del mundo</Text>
+            <Text style={[styles.subtitle, { color: colors.text }]}>Gestiona tu hogar, desde cualquier lugar del mundo.</Text>
 
             {/* Home Icon */}
             <HomeOff
                 width={200}
                 height={200}
-                style={{ color: colors.text, paddingTop: 250 }}
+                style={{ color: '#009387', paddingTop: 240 }}
             />
 
-            <Text style={[styles.homeStateText, { color: colors.text }]}>La casa está cerrada.</Text>
-            <Text style={[styles.text, { color: colors.text, paddingBottom: 10 }]}>Abrir el portón principal para una mejor experiencia con Domogram.</Text>
+            <Text style={[styles.homeStateText, { color: '#009387' }]}>La casa está cerrada.</Text>
+            <Text style={[styles.text, { color: colors.text, paddingBottom: 10 }]}>Abre el portón principal para una mejor experiencia con Domogram.</Text>
 
             <InicioButton
                 customBackgroundColor="#009387"
                 customText={"Abrir porton principal"}
-                customImage={<HomeOff
+                customImage={<HomeOn
                     width={40}
                     height={40}
                     style={{ color: 'white' }}

@@ -68,7 +68,7 @@ const App = () => {
       ...PaperDarkTheme.colors,
       background: '#333333',
       text: '#ffffff',
-      buttonBackgroundDarker: '#ffffff'
+      buttonBackgroundDarker: 'white'
     }
   }
 

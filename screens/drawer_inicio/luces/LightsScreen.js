@@ -17,7 +17,7 @@ const LightsScreen = ({ navigation }) => {
         <View style={styles.container}>
             <Text style={[styles.title, { color: colors.text }]}>Luces del hogar</Text>
 
-            <Text style={[styles.subtitle, { color: colors.text }]}>Administra la luz de tu hogar con los siguientes botones para encender y apagar las luces.</Text>
+            <Text style={[styles.subtitle, { color: colors.text }]}>Controla la iluminación de las distintas habitaciones.</Text>
 
             <Button
                 title="Cuarto"
