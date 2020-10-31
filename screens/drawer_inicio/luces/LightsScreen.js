@@ -8,6 +8,12 @@ import {
 
 import { useTheme } from '@react-navigation/native'
 
+// Components
+import InicioButton from '../../../components/InicioButton'
+
+// SVG Components
+import LuzIcono from '../../../resources/flash_on-24px.svg'
+
 
 const LightsScreen = ({ navigation }) => {
 
@@ -43,11 +49,26 @@ const LightsScreen = ({ navigation }) => {
                 title="Comedor"
             />
 
-            <Text style={[styles.text, { color: colors.text }]}>Pulsa el siguiente botón para encender y apagar todas las luces a la vez.</Text>
+            <Text style={[styles.text, {
+                color: colors.text,
+                fontWeight: 'bold',
+                paddingBottom: 10
+            }]}>Pulsa el siguiente botón para encender y apagar todas las luces a la vez.</Text>
 
-            <Button
-                title="Encender todas las luces"
-            // onPress={() => navigation.popToTop()}
+            <InicioButton
+                customBackgroundColor="#c41c00"
+                customText={"Encender todas las luces"}
+                customImage={<LuzIcono
+                    width={40}
+                    height={40}
+                    style={{ color: 'white' }}
+                />}
+
+                handlePress={next => {
+                    alert("Refrescando distancia...")
+                    next()
+                    // setTimeout(() => alert("Listo"), 2000)
+                }}
             />
 
         </View>
