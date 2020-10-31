@@ -65,7 +65,7 @@ const LightsScreen = ({ navigation }) => {
                 />}
 
                 handlePress={next => {
-                    alert("Refrescando distancia...")
+                    alert("Encendiendo todas las luces del hogar...")
                     next()
                     // setTimeout(() => alert("Listo"), 2000)
                 }}
