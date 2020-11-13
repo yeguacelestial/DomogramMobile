@@ -17,10 +17,73 @@ import HomeOn from '../../../resources/meeting_room-24px.svg'
 
 
 const HomeScreen = ({ navigation }) => {
+    /* Casa States */
+    const [casa, setCasa] = React.useState({
+        abierta: false,
+        estadoTexto: 'La casa está cerrada.',
+        estadoColor: '#009387',
+        estadoIcon: <HomeOff
+            width={200}
+            height={200}
+            style={{ color: '#009387', paddingTop: 240 }}
+        />,
+
+        botonText: 'Abrir portón principal',
+        botonColor: '#009387',
+        botonIcon: <HomeOn
+            width={40}
+            height={40}
+            style={{ color: 'white' }}
+        />,
+    })
 
     const { colors } = useTheme()
 
     // const theme = useTheme()
+    function handleButtonContent() {
+
+        if (casa.abierta) {
+            setCasa({
+                abierta: false,
+                estadoTexto: 'La casa está cerrada.',
+                estadoColor: '#009387',
+                estadoIcon: <HomeOff
+                    width={200}
+                    height={200}
+                    style={{ color: '#009387', paddingTop: 240 }}
+                />,
+
+                botonText: 'Abrir portón principal',
+                botonColor: '#009387',
+                botonIcon: <HomeOn
+                    width={40}
+                    height={40}
+                    style={{ color: 'white' }}
+                />,
+            })
+        }
+
+        else {
+            setCasa({
+                abierta: true,
+                estadoTexto: 'La casa está abierta.',
+                estadoColor: 'red',
+                estadoIcon: <HomeOn
+                    width={200}
+                    height={200}
+                    style={{ color: 'red', paddingTop: 240 }}
+                />,
+
+                botonText: 'Cerrar portón principal',
+                botonColor: 'red',
+                botonIcon: <HomeOff
+                    width={40}
+                    height={40}
+                    style={{ color: 'white' }}
+                />
+            })
+        }
+    }
 
     return (
         <View style={styles.container}>
@@ -30,26 +93,19 @@ const HomeScreen = ({ navigation }) => {
             <Text style={[styles.subtitle, { color: colors.text }]}>Gestiona tu hogar, desde cualquier lugar del mundo.</Text>
 
             {/* Home Icon */}
-            <HomeOff
-                width={200}
-                height={200}
-                style={{ color: '#009387', paddingTop: 240 }}
-            />
+            {casa.estadoIcon}
 
-            <Text style={[styles.homeStateText, { color: '#009387' }]}>La casa está cerrada.</Text>
+            <Text style={[styles.homeStateText, { color: casa.estadoColor }]}>{casa.estadoTexto}</Text>
             <Text style={[styles.text, { color: colors.text, paddingBottom: 10 }]}>Abre el portón principal para una mejor experiencia con Domogram.</Text>
 
             <InicioButton
-                customBackgroundColor="#009387"
-                customText={"Abrir porton principal"}
-                customImage={<HomeOn
-                    width={40}
-                    height={40}
-                    style={{ color: 'white' }}
-                />}
+                customBackgroundColor={casa.botonColor}
+                customText={casa.botonText}
+                customImage={casa.botonIcon}
 
                 handlePress={next => {
                     // alert("Abriendo casa...")
+                    handleButtonContent()
                     next()
                     // setTimeout(() => alert("Listo"), 2000)
                 }}
