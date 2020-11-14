@@ -10,7 +10,7 @@ import { useTheme } from '@react-navigation/native'
 
 import * as Animatable from 'react-native-animatable'
 
-import { Fold } from 'react-native-animated-spinkit'
+import { Fold, Wave } from 'react-native-animated-spinkit'
 
 // Components
 import InicioButton from '../../../components/InicioButton'
@@ -130,6 +130,8 @@ const HomeScreen = ({ navigation }) => {
                 handlePress={next => {
                     setCasa({
                         ...casa,
+                        botonIcon: <Text> </Text>,
+                        botonText: <Wave size={38} color='#FFF' style={{ paddingLeft: -40 }} />,
                         estadoTexto: casa.abierta ? 'Cerrando casa...' : 'Abriendo casa...',
                         estadoIcon:
                             <Fold size={100} color={casa.estadoColor} style={{ marginTop: 40, marginBottom: 50 }} />,
