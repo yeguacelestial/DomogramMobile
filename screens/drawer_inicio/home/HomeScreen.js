@@ -10,6 +10,8 @@ import { useTheme } from '@react-navigation/native'
 
 import * as Animatable from 'react-native-animatable'
 
+import { Fold } from 'react-native-animated-spinkit'
+
 // Components
 import InicioButton from '../../../components/InicioButton'
 
@@ -38,6 +40,8 @@ const HomeScreen = ({ navigation }) => {
             height={40}
             style={{ color: 'white' }}
         />,
+
+        isLoading: false,
     })
 
     const { colors } = useTheme()
@@ -71,6 +75,7 @@ const HomeScreen = ({ navigation }) => {
                     height={40}
                     style={{ color: 'white' }}
                 />,
+                isLoading: false,
             })
         }
 
@@ -98,7 +103,8 @@ const HomeScreen = ({ navigation }) => {
                     width={40}
                     height={40}
                     style={{ color: 'white' }}
-                />
+                />,
+                isLoading: false,
             })
         }
     }
@@ -120,10 +126,16 @@ const HomeScreen = ({ navigation }) => {
                 customBackgroundColor={casa.botonColor}
                 customText={casa.botonText}
                 customImage={casa.botonIcon}
-
+                isLoading={casa.isLoading}
                 handlePress={next => {
-                    // alert("Abriendo casa...")
-                    handleButtonContent()
+                    setCasa({
+                        ...casa,
+                        estadoTexto: casa.abierta ? 'Cerrando casa...' : 'Abriendo casa...',
+                        estadoIcon:
+                            <Fold size={100} color={casa.estadoColor} style={{ marginTop: 40, marginBottom: 50 }} />,
+                        isLoading: true,
+                    })
+                    setTimeout(() => handleButtonContent(), 5000)
                     next()
                     // setTimeout(() => alert("Listo"), 2000)
                 }}

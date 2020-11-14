@@ -10,7 +10,8 @@ const InicioButton = ({
     customBackgroundColor,
     customImage,
     customText,
-    handlePress
+    handlePress,
+    isLoading
 }) => {
 
     const { colors } = useTheme()
@@ -22,8 +23,9 @@ const InicioButton = ({
             borderColor={colors.buttonBackgroundDarker}
             backgroundColor={customBackgroundColor}
             width={250}
-            progress
+            progress={isLoading}
             onPress={handlePress}
+            disabled={isLoading ? true : false}
         >
             {customImage}
             <Text style={{ color: '#fff', fontWeight: 'bold', paddingLeft: 15 }}>
