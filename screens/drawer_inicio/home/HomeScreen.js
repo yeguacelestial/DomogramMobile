@@ -8,6 +8,8 @@ import {
 
 import { useTheme } from '@react-navigation/native'
 
+import * as Animatable from 'react-native-animatable'
+
 // Components
 import InicioButton from '../../../components/InicioButton'
 
@@ -22,11 +24,12 @@ const HomeScreen = ({ navigation }) => {
         abierta: false,
         estadoTexto: 'La casa está cerrada.',
         estadoColor: '#009387',
-        estadoIcon: <HomeOff
-            width={200}
-            height={200}
-            style={{ color: '#009387', paddingTop: 240 }}
-        />,
+        estadoIcon:
+            <HomeOff
+                width={200}
+                height={200}
+                style={{ color: '#009387', paddingTop: 240 }}
+            />,
 
         botonText: 'Abrir portón principal',
         botonColor: '#009387',
@@ -41,17 +44,25 @@ const HomeScreen = ({ navigation }) => {
 
     // const theme = useTheme()
     function handleButtonContent() {
+        // API calls here
 
         if (casa.abierta) {
             setCasa({
                 abierta: false,
                 estadoTexto: 'La casa está cerrada.',
                 estadoColor: '#009387',
-                estadoIcon: <HomeOff
-                    width={200}
-                    height={200}
-                    style={{ color: '#009387', paddingTop: 240 }}
-                />,
+                estadoIcon:
+                    <Animatable.View
+                        animation="flipOutY"
+                        iterationCount={1}
+                        direction="reverse"
+                    >
+                        <HomeOff
+                            width={200}
+                            height={200}
+                            style={{ color: '#009387', paddingTop: 240 }}
+                        />
+                    </Animatable.View>,
 
                 botonText: 'Abrir portón principal',
                 botonColor: '#009387',
@@ -68,11 +79,18 @@ const HomeScreen = ({ navigation }) => {
                 abierta: true,
                 estadoTexto: 'La casa está abierta.',
                 estadoColor: 'red',
-                estadoIcon: <HomeOn
-                    width={200}
-                    height={200}
-                    style={{ color: 'red', paddingTop: 240 }}
-                />,
+                estadoIcon:
+                    <Animatable.View
+                        animation="flipInY"
+                        iterationCount={1}
+                        direction="alternate"
+                    >
+                        <HomeOn
+                            width={200}
+                            height={200}
+                            style={{ color: 'red', paddingTop: 240 }}
+                        />
+                    </Animatable.View>,
 
                 botonText: 'Cerrar portón principal',
                 botonColor: 'red',
@@ -94,8 +112,8 @@ const HomeScreen = ({ navigation }) => {
 
             {/* Home Icon */}
             {casa.estadoIcon}
-
             <Text style={[styles.homeStateText, { color: casa.estadoColor }]}>{casa.estadoTexto}</Text>
+
             <Text style={[styles.text, { color: colors.text, paddingBottom: 10 }]}>Abre el portón principal para una mejor experiencia con Domogram.</Text>
 
             <InicioButton
