@@ -15,7 +15,6 @@ import InicioButton from '../../../components/InicioButton'
 
 // SVG Components
 import TemperaturaIcono from '../../../resources/ac_unit-24px.svg'
-import { Line } from 'react-native-svg'
 
 
 const TemperatureScreen = ({ navigation }) => {
@@ -25,7 +24,6 @@ const TemperatureScreen = ({ navigation }) => {
     const theme = useTheme()
 
     // RN SVG Charts
-    const data = [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20]
     const contentInsent = { top: 20, bottom: 20 }
 
     const [sensor, setSensor] = React.useState({
@@ -48,19 +46,13 @@ const TemperatureScreen = ({ navigation }) => {
 
             <Text style={[styles.subtitle, { color: colors.text }]}>Monitorea la temperatura interior y el porcentaje de humedad.</Text>
 
-            {/* <TemperaturaIcono
-                width={200}
-                height={200}
-                style={{ color: '#694fad', paddingTop: 250 }}
-            /> */}
-
             <View style={{ height: 200, flexDirection: 'row' }}>
                 <YAxis
                     // data={data}
                     data={sensor.temperatura}
                     contentInsent={contentInsent}
                     svg={{
-                        fill: 'grey',
+                        fill: colors.text,
                         fontSize: 10
                     }}
                     numberOfTicks={10}
@@ -69,14 +61,21 @@ const TemperatureScreen = ({ navigation }) => {
                 <LineChart
                     style={{ flex: 1, marginLeft: 16 }}
                     data={sensor.temperatura}
-                    svg={{ stroke: 'rgb(134, 65, 244)' }}
+                    svg={{ stroke: 'rgb(134, 65, 244)', strokeWidth: 3 }}
                     contentInsent={contentInsent}
                 >
-                    <Grid />
+                    <Grid
+                        svg={{ stroke: colors.text, strokeOpacity: 0.5 }}
+                    />
                 </LineChart>
 
             </View>
 
+            <TemperaturaIcono
+                width={50}
+                height={50}
+                style={{ color: '#694fad' }}
+            />
             <Text style={[styles.subtitle,
             {
                 color: theme.dark ? colors.text : '#694fad',
