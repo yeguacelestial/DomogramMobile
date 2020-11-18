@@ -2,36 +2,71 @@ import React from 'react'
 import {
     View,
     Text,
-    Button,
     StyleSheet
 } from 'react-native'
 
 import { useTheme } from '@react-navigation/native'
 
+import { Pulse, Bounce } from 'react-native-animated-spinkit'
+
 // Components
 import InicioButton from '../../../components/InicioButton'
 
 // SVG Components
-import MovimientoIcono from '../../../resources/track_changes-24px.svg'
 import RefreshIcono from '../../../resources/refresh-24px.svg'
+
 
 const MovementScreen = ({ navigation }) => {
 
     const { colors } = useTheme()
 
+    // Security animations state
+    const [secAnimations, setSecAnimations] = React.useState({
+        security_animation: <Pulse size={150} color={'#1f65ff'} style={{ marginTop: 40, marginBottom: 50 }} />
+    })
+
+    // Distancia state
+    const [ultrasonico, setUltrasonico] = React.useState({
+        distancia: 14.00
+    })
+
+    const getDistanciaApi = async () => {
+        try {
+            let response = await fetch("http://www.randomnumberapi.com/api/v1.0/random?min=10&max=20&count=1")
+            let json = await response.json()
+            console.log("JSON => " + json)
+            return json[0]
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    React.useEffect(() => {
+        setInterval(async () => {
+            // API Calls
+            const random_dist = await getDistanciaApi()
+            setUltrasonico({ distancia: random_dist })
+        }, 1000)
+    }, [])
+
     return (
         <View style={styles.container}>
-            <Text style={[styles.title, { color: colors.text }]}>Sensor de movimiento</Text>
+            <Text style={[styles.title, { color: colors.text }]}>Capturando movimiento...</Text>
 
-            <Text style={[styles.subtitle, { color: colors.text }]}>Distancia a la que hay movimiento, calculada a través de ultrasonido.</Text>
+            <Text style={[styles.subtitle, { color: colors.text }]}>Actualizando la distancia del objeto más cercano por ultrasonido...</Text>
 
-            <MovimientoIcono
-                width={200}
-                height={200}
-                style={{ color: '#1f65ff', paddingTop: 250 }}
-            />
+            {ultrasonico.distancia >= 14 ?
+                <Pulse size={150} color={'#1f65ff'} style={{ marginTop: 40, marginBottom: 50 }} />
+                :
+                <Bounce size={150} color={'red'} style={{ marginTop: 40, marginBottom: 50 }} />}
 
-            <Text style={[styles.distanciaTexto, { color: colors.text, paddingBottom: 15 }]}>Ultima distancia: 3 metros.</Text>
+            <Text style={[styles.distanciaTexto, { color: colors.text, paddingBottom: 5 }]}>El objeto más cercano está a {ultrasonico.distancia / 100} metros.</Text>
+
+            { ultrasonico.distancia >= 14 ?
+                <Text style={[styles.distanciaTexto, { color: 'green', paddingBottom: 5 }]}>El hogar está seguro.</Text>
+                :
+                <Text style={[styles.distanciaTexto, { color: 'red', paddingBottom: 5 }]}>Hay algo/alguien cercano.</Text>
+            }
 
             <InicioButton
                 customBackgroundColor="#1f65ff"
