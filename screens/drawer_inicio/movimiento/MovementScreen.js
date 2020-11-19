@@ -65,10 +65,10 @@ const MovementScreen = ({ navigation }) => {
             { ultrasonico.distancia >= 14 ?
                 <Text style={[styles.distanciaTexto, { color: 'green', paddingBottom: 5 }]}>El hogar está seguro.</Text>
                 :
-                <Text style={[styles.distanciaTexto, { color: 'red', paddingBottom: 5 }]}>Hay algo/alguien cercano.</Text>
+                <Text style={[styles.distanciaTexto, { color: 'red', paddingBottom: 5 }]}>Hay algo/alguien cerca.</Text>
             }
 
-            <InicioButton
+            {/* <InicioButton
                 customBackgroundColor="#1f65ff"
                 customText={"Refrescar distancia"}
                 customImage={<RefreshIcono
@@ -82,7 +82,7 @@ const MovementScreen = ({ navigation }) => {
                     next()
                     // setTimeout(() => alert("Listo"), 2000)
                 }}
-            />
+            /> */}
 
         </View>
     )
