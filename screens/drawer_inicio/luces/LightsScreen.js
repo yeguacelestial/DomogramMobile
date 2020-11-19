@@ -3,7 +3,8 @@ import {
     View,
     Text,
     Button,
-    StyleSheet
+    StyleSheet,
+    Switch
 } from 'react-native'
 
 import { useTheme } from '@react-navigation/native'
@@ -12,12 +13,22 @@ import { useTheme } from '@react-navigation/native'
 import InicioButton from '../../../components/InicioButton'
 
 // SVG Components
-import LuzIcono from '../../../resources/flash_on-24px.svg'
+import CuartoIcono from '../../../resources/cuarto.svg'
+import EstanciaIcono from '../../../resources/estancia.svg'
+import BanoIcono from '../../../resources/baño.svg'
+import CocinaIcono from '../../../resources/cocina.svg'
+import EntradaIcono from '../../../resources/entrada.svg'
+import ComedorIcono from '../../../resources/comedor.svg'
+
+import AwesomeButtonCartman from 'react-native-really-awesome-button/src/themes/cartman'
 
 
 const LightsScreen = ({ navigation }) => {
 
     const { colors } = useTheme()
+
+    const [isEnabled, setIsEnabled] = React.useState(false)
+    const toggleSwitch = () => setIsEnabled(previousState => !previousState)
 
     return (
         <View style={styles.container}>
@@ -25,51 +36,136 @@ const LightsScreen = ({ navigation }) => {
 
             <Text style={[styles.subtitle, { color: colors.text }]}>Controla la iluminación de las distintas habitaciones.</Text>
 
-            <Button
-                title="Cuarto"
-            />
+            <View style={{ flexDirection: 'row' }}>
+                <CuartoIcono
+                    width={50}
+                    height={50}
+                    style={{ color: colors.text }}
+                />
 
-            <Button
-                title="Estancia"
-            />
+                <Text style={{ paddingTop: 15, paddingRight: 150, fontSize: 15 }}>
+                    Habitación
+                </Text>
 
-            <Button
-                title="Baño"
-            />
+                <Switch
+                    trackColor={{ false: '#767577', true: '#81b0ff' }}
+                    thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+                    onValueChange={toggleSwitch}
+                    value={isEnabled}
+                />
+            </View>
 
-            <Button
-                title="Cocina"
-            />
+            <View style={{ flexDirection: 'row' }}>
+                <EstanciaIcono
+                    width={50}
+                    height={40}
+                    style={{ color: colors.text, marginLeft: -10 }}
+                />
 
-            <Button
-                title="Entrada"
-            />
+                <Text style={{ paddingTop: 10, paddingRight: 160, fontSize: 15 }}>
+                    Estancia
+                </Text>
 
-            <Button
-                title="Comedor"
-            />
+                <Switch
+                    trackColor={{ false: '#767577', true: '#81b0ff' }}
+                    thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+                    onValueChange={toggleSwitch}
+                    value={isEnabled}
+                />
+            </View>
 
-            <Text style={[styles.text, {
-                color: colors.text,
-                fontWeight: 'bold',
-                paddingBottom: 10
-            }]}>Pulsa el siguiente botón para encender y apagar todas las luces a la vez.</Text>
-
-            <InicioButton
-                customBackgroundColor="#c41c00"
-                customText={"Encender todas las luces"}
-                customImage={<LuzIcono
+            <View style={{ flexDirection: 'row' }}>
+                <BanoIcono
                     width={40}
                     height={40}
-                    style={{ color: 'white' }}
-                />}
+                    style={{ color: colors.text }}
+                />
 
-                handlePress={next => {
-                    alert("Encendiendo todas las luces del hogar...")
-                    next()
-                    // setTimeout(() => alert("Listo"), 2000)
-                }}
-            />
+                <Text style={{ paddingTop: 15, paddingRight: 190, fontSize: 15 }}>
+                    Baño
+                </Text>
+
+                <Switch
+                    trackColor={{ false: '#767577', true: '#81b0ff' }}
+                    thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+                    onValueChange={toggleSwitch}
+                    value={isEnabled}
+                />
+            </View>
+
+            <View style={{ flexDirection: 'row' }}>
+                <CocinaIcono
+                    width={40}
+                    height={40}
+                    style={{ color: colors.text }}
+                />
+
+                <Text style={{ paddingTop: 15, paddingRight: 180, fontSize: 15 }}>
+                    Cocina
+                </Text>
+
+                <Switch
+                    trackColor={{ false: '#767577', true: '#81b0ff' }}
+                    thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+                    onValueChange={toggleSwitch}
+                    value={isEnabled}
+                />
+            </View>
+
+            <View style={{ flexDirection: 'row' }}>
+                <EntradaIcono
+                    width={40}
+                    height={40}
+                    style={{ color: colors.text }}
+                />
+
+                <Text style={{ paddingTop: 15, paddingRight: 180, fontSize: 15 }}>
+                    Entrada
+                </Text>
+
+                <Switch
+                    trackColor={{ false: '#767577', true: '#81b0ff' }}
+                    thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+                    onValueChange={toggleSwitch}
+                    value={isEnabled}
+                />
+            </View>
+
+            <View style={{ flexDirection: 'row' }}>
+                <ComedorIcono
+                    width={40}
+                    height={40}
+                    style={{ color: colors.text }}
+                />
+
+                <Text style={{ paddingTop: 15, paddingRight: 170, fontSize: 15 }}>
+                    Comedor
+                </Text>
+
+                <Switch
+                    trackColor={{ false: '#767577', true: '#81b0ff' }}
+                    thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+                    onValueChange={toggleSwitch}
+                    value={isEnabled}
+                />
+            </View>
+
+            <View style={{ paddingTop: 50 }}>
+                <AwesomeButtonCartman
+                    textColor="white"
+                    backgroundDarker={colors.buttonBackgroundDarker}
+                    borderColor={colors.buttonBackgroundDarker}
+                    backgroundColor={colors.backgroundColor}
+                    width={250}
+                    height={70}
+                    onPress={next => next()}
+                >
+                    <Text style={{ color: colors.text, fontWeight: 'bold' }}>
+                        Encender/apagar todas las luces
+                    {/* Cuarto */}
+                    </Text>
+                </AwesomeButtonCartman>
+            </View>
 
         </View>
     )

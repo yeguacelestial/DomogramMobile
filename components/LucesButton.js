@@ -3,10 +3,10 @@ import { Text } from 'react-native'
 
 import { useTheme } from '@react-navigation/native'
 
-import AwesomeButtonCartman from 'react-native-really-awesome-button/src/themes/cartman'
+import AwesomeButtonCartman from 'react-native-really-awesome-button/src/themes/cartman';
 
 
-const InicioButton = ({
+const LucesButton = ({
     customBackgroundColor,
     customImage,
     customText,
@@ -26,7 +26,6 @@ const InicioButton = ({
             progress={isLoading}
             onPress={handlePress}
             disabled={isLoading ? true : false}
-            raiseLevel={isLoading ? 1 : 10}
         >
             {customImage}
             <Text style={{ color: '#fff', fontWeight: 'bold', paddingLeft: 15 }}>
@@ -36,4 +35,4 @@ const InicioButton = ({
     )
 }
 
-export default InicioButton
+export default LucesButton
