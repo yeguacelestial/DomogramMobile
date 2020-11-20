@@ -43,7 +43,7 @@ const LightsScreen = ({ navigation }) => {
                     style={{ color: colors.text }}
                 />
 
-                <Text style={{ paddingTop: 15, paddingRight: 150, fontSize: 15 }}>
+                <Text style={{ paddingTop: 15, paddingRight: 150, fontSize: 15, color: colors.text }}>
                     Habitación
                 </Text>
 
@@ -62,7 +62,7 @@ const LightsScreen = ({ navigation }) => {
                     style={{ color: colors.text, marginLeft: -10 }}
                 />
 
-                <Text style={{ paddingTop: 10, paddingRight: 160, fontSize: 15 }}>
+                <Text style={{ paddingTop: 10, paddingRight: 160, fontSize: 15, color: colors.text }}>
                     Estancia
                 </Text>
 
@@ -81,7 +81,7 @@ const LightsScreen = ({ navigation }) => {
                     style={{ color: colors.text }}
                 />
 
-                <Text style={{ paddingTop: 15, paddingRight: 190, fontSize: 15 }}>
+                <Text style={{ paddingTop: 15, paddingRight: 190, fontSize: 15, color: colors.text }}>
                     Baño
                 </Text>
 
@@ -100,7 +100,7 @@ const LightsScreen = ({ navigation }) => {
                     style={{ color: colors.text }}
                 />
 
-                <Text style={{ paddingTop: 15, paddingRight: 180, fontSize: 15 }}>
+                <Text style={{ paddingTop: 15, paddingRight: 180, fontSize: 15, color: colors.text }}>
                     Cocina
                 </Text>
 
@@ -119,7 +119,7 @@ const LightsScreen = ({ navigation }) => {
                     style={{ color: colors.text }}
                 />
 
-                <Text style={{ paddingTop: 15, paddingRight: 180, fontSize: 15 }}>
+                <Text style={{ paddingTop: 15, paddingRight: 180, fontSize: 15, color: colors.text }}>
                     Entrada
                 </Text>
 
@@ -138,7 +138,7 @@ const LightsScreen = ({ navigation }) => {
                     style={{ color: colors.text }}
                 />
 
-                <Text style={{ paddingTop: 15, paddingRight: 170, fontSize: 15 }}>
+                <Text style={{ paddingTop: 15, paddingRight: 170, fontSize: 15, color: colors.text }}>
                     Comedor
                 </Text>
 
