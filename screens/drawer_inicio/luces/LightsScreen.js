@@ -2,15 +2,11 @@ import React from 'react'
 import {
     View,
     Text,
-    Button,
     StyleSheet,
     Switch
 } from 'react-native'
 
 import { useTheme } from '@react-navigation/native'
-
-// Components
-// import InicioButton from '../../../components/InicioButton'
 
 // SVG Components
 import CuartoIcono from '../../../resources/cuarto.svg'
@@ -20,54 +16,151 @@ import CocinaIcono from '../../../resources/cocina.svg'
 import EntradaIcono from '../../../resources/entrada.svg'
 import ComedorIcono from '../../../resources/comedor.svg'
 
-import AwesomeButtonCartman from 'react-native-really-awesome-button/src/themes/cartman'
+import { domogram_api_endpoint } from '../../../screens/config'
 
 
 const LightsScreen = ({ navigation }) => {
 
     const { colors } = useTheme()
 
+    // Handle led
+    const handleLed = async (cuarto, serial, estado) => {
+        try {
+            const result = await fetch(`${domogram_api_endpoint}/dispositivo/luz-${cuarto}`, {
+                method: 'put',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    // Encender led
+                    "parametros": {
+                        "dato_serial": `${serial}`,
+                        "encendido": estado
+                    }
+                })
+            })
+
+            const response = await result.json()
+            // alert(JSON.stringify(response))
+
+        } catch (error) {
+            console.error(error)
+        }
+    }
 
     // - Habitacion
     const [habIsEnabled, setHabIsEnabled] = React.useState(false)
     const toggleHabSwitch = () => {
-        alert("Habitacion")
-        setHabIsEnabled(previousState => !previousState)
+        setHabIsEnabled(previousState => {
+            // When switch = ON....
+            if (!previousState === true) {
+                // PUT request - Encender led
+                handleLed('habitacion', 'Q', true)
+
+            } else {
+                // When switch == OFF...
+                // PUT request - Apagar led
+                handleLed('habitacion', 'W', false)
+            }
+
+            return !previousState
+        })
     }
 
     //  - Estancia
     const [estIsEnabled, setEstIsEnabled] = React.useState(false)
     const toggleEstSwitch = () => {
-        alert("Estancia")
-        setEstIsEnabled(previousState => !previousState)
+        setEstIsEnabled(previousState => {
+            // When switch = ON....
+            if (!previousState === true) {
+                // PUT request - Encender led
+                handleLed('estancia', 'E', true)
+
+            } else {
+                // When switch == OFF...
+                // PUT request - Apagar led
+                handleLed('estancia', 'R', false)
+            }
+
+            return !previousState
+        })
     }
 
     //  - Baño
     const [banoIsEnabled, setBanoIsEnabled] = React.useState(false)
     const toggleBanoSwitch = () => {
-        alert("Baño")
-        setBanoIsEnabled(previousState => !previousState)
+        setBanoIsEnabled(previousState => {
+            // When switch = ON....
+            if (!previousState === true) {
+                // PUT request - Encender led
+                handleLed('baño', 'T', true)
+
+            } else {
+                // When switch == OFF...
+                // PUT request - Apagar led
+                handleLed('baño', 'Y', false)
+            }
+
+            return !previousState
+        })
     }
 
     //  - Cocina
     const [cocinaIsEnabled, setCocinaIsEnabled] = React.useState(false)
     const toggleCocinaSwitch = () => {
-        alert("Cocina")
-        setCocinaIsEnabled(previousState => !previousState)
+        setCocinaIsEnabled(previousState => {
+            // When switch = ON....
+            if (!previousState === true) {
+                // PUT request - Encender led
+                handleLed('cocina', 'G', true)
+
+            } else {
+                // When switch == OFF...
+                // PUT request - Apagar led
+                handleLed('cocina', 'H', false)
+            }
+
+            return !previousState
+        })
     }
 
     //  - Entrada
     const [entradaIsEnabled, setEntradaIsEnabled] = React.useState(false)
     const toggleEntradaSwitch = () => {
-        alert("Entrada")
-        setEntradaIsEnabled(previousState => !previousState)
+        setEntradaIsEnabled(previousState => {
+            // When switch = ON....
+            if (!previousState === true) {
+                // PUT request - Encender led
+                handleLed('entrada', 'J', true)
+
+            } else {
+                // When switch == OFF...
+                // PUT request - Apagar led
+                handleLed('entrada', 'K', false)
+            }
+
+            return !previousState
+        })
     }
 
     //  - Comedor
     const [comedorIsEnabled, setComedorIsEnabled] = React.useState(false)
     const toggleComedorSwitch = () => {
-        alert("Comedor")
-        setComedorIsEnabled(previousState => !previousState)
+        setComedorIsEnabled(previousState => {
+            // When switch = ON....
+            if (!previousState === true) {
+                // PUT request - Encender led
+                handleLed('comedor', 'L', true)
+
+            } else {
+                // When switch == OFF...
+                // PUT request - Apagar led
+                handleLed('comedor', 'Z', false)
+            }
+
+            return !previousState
+        })
     }
 
 
