@@ -27,8 +27,49 @@ const LightsScreen = ({ navigation }) => {
 
     const { colors } = useTheme()
 
-    const [isEnabled, setIsEnabled] = React.useState(false)
-    const toggleSwitch = () => setIsEnabled(previousState => !previousState)
+
+    // - Habitacion
+    const [habIsEnabled, setHabIsEnabled] = React.useState(false)
+    const toggleHabSwitch = () => {
+        alert("Habitacion")
+        setHabIsEnabled(previousState => !previousState)
+    }
+
+    //  - Estancia
+    const [estIsEnabled, setEstIsEnabled] = React.useState(false)
+    const toggleEstSwitch = () => {
+        alert("Estancia")
+        setEstIsEnabled(previousState => !previousState)
+    }
+
+    //  - Baño
+    const [banoIsEnabled, setBanoIsEnabled] = React.useState(false)
+    const toggleBanoSwitch = () => {
+        alert("Baño")
+        setBanoIsEnabled(previousState => !previousState)
+    }
+
+    //  - Cocina
+    const [cocinaIsEnabled, setCocinaIsEnabled] = React.useState(false)
+    const toggleCocinaSwitch = () => {
+        alert("Cocina")
+        setCocinaIsEnabled(previousState => !previousState)
+    }
+
+    //  - Entrada
+    const [entradaIsEnabled, setEntradaIsEnabled] = React.useState(false)
+    const toggleEntradaSwitch = () => {
+        alert("Entrada")
+        setEntradaIsEnabled(previousState => !previousState)
+    }
+
+    //  - Comedor
+    const [comedorIsEnabled, setComedorIsEnabled] = React.useState(false)
+    const toggleComedorSwitch = () => {
+        alert("Comedor")
+        setComedorIsEnabled(previousState => !previousState)
+    }
+
 
     return (
         <View style={styles.container}>
@@ -49,9 +90,9 @@ const LightsScreen = ({ navigation }) => {
 
                 <Switch
                     trackColor={{ false: '#767577', true: '#81b0ff' }}
-                    thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
-                    onValueChange={toggleSwitch}
-                    value={isEnabled}
+                    thumbColor={habIsEnabled ? '#f5dd4b' : '#f4f3f4'}
+                    onValueChange={toggleHabSwitch}
+                    value={habIsEnabled}
                 />
             </View>
 
@@ -68,9 +109,9 @@ const LightsScreen = ({ navigation }) => {
 
                 <Switch
                     trackColor={{ false: '#767577', true: '#81b0ff' }}
-                    thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
-                    onValueChange={toggleSwitch}
-                    value={isEnabled}
+                    thumbColor={estIsEnabled ? '#f5dd4b' : '#f4f3f4'}
+                    onValueChange={toggleEstSwitch}
+                    value={estIsEnabled}
                 />
             </View>
 
@@ -87,9 +128,9 @@ const LightsScreen = ({ navigation }) => {
 
                 <Switch
                     trackColor={{ false: '#767577', true: '#81b0ff' }}
-                    thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
-                    onValueChange={toggleSwitch}
-                    value={isEnabled}
+                    thumbColor={banoIsEnabled ? '#f5dd4b' : '#f4f3f4'}
+                    onValueChange={toggleBanoSwitch}
+                    value={banoIsEnabled}
                 />
             </View>
 
@@ -106,9 +147,9 @@ const LightsScreen = ({ navigation }) => {
 
                 <Switch
                     trackColor={{ false: '#767577', true: '#81b0ff' }}
-                    thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
-                    onValueChange={toggleSwitch}
-                    value={isEnabled}
+                    thumbColor={cocinaIsEnabled ? '#f5dd4b' : '#f4f3f4'}
+                    onValueChange={toggleCocinaSwitch}
+                    value={cocinaIsEnabled}
                 />
             </View>
 
@@ -125,9 +166,9 @@ const LightsScreen = ({ navigation }) => {
 
                 <Switch
                     trackColor={{ false: '#767577', true: '#81b0ff' }}
-                    thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
-                    onValueChange={toggleSwitch}
-                    value={isEnabled}
+                    thumbColor={entradaIsEnabled ? '#f5dd4b' : '#f4f3f4'}
+                    onValueChange={toggleEntradaSwitch}
+                    value={entradaIsEnabled}
                 />
             </View>
 
@@ -144,27 +185,10 @@ const LightsScreen = ({ navigation }) => {
 
                 <Switch
                     trackColor={{ false: '#767577', true: '#81b0ff' }}
-                    thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
-                    onValueChange={toggleSwitch}
-                    value={isEnabled}
+                    thumbColor={comedorIsEnabled ? '#f5dd4b' : '#f4f3f4'}
+                    onValueChange={toggleComedorSwitch}
+                    value={comedorIsEnabled}
                 />
-            </View>
-
-            <View style={{ paddingTop: 50 }}>
-                <AwesomeButtonCartman
-                    textColor="white"
-                    backgroundDarker={colors.buttonBackgroundDarker}
-                    borderColor={colors.buttonBackgroundDarker}
-                    backgroundColor={colors.backgroundColor}
-                    width={250}
-                    height={70}
-                    onPress={next => next()}
-                >
-                    <Text style={{ color: colors.text, fontWeight: 'bold' }}>
-                        Encender/apagar todas las luces
-                    {/* Cuarto */}
-                    </Text>
-                </AwesomeButtonCartman>
             </View>
 
         </View>
