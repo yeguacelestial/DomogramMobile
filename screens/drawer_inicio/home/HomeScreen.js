@@ -12,6 +12,8 @@ import * as Animatable from 'react-native-animatable'
 
 import { Fold, Wave } from 'react-native-animated-spinkit'
 
+import { domogram_api_endpoint } from '../../../screens/config'
+
 // Components
 import InicioButton from '../../../components/InicioButton'
 
@@ -46,10 +48,60 @@ const HomeScreen = ({ navigation }) => {
 
     const { colors } = useTheme()
 
-    // const theme = useTheme()
-    function handleButtonContent() {
-        // API calls here
+    // Mandar señal a la API para que abra la casa
+    async function abrirPortonApi() {
+        try {
+            const result = await fetch(`${domogram_api_endpoint}/dispositivo/puertas`, {
+                method: 'put',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    // Abrir puerta
+                    "parametros": {
+                        "dato_serial": "A",
+                        "abierto": true
+                    }
+                })
+            })
 
+            const response = await result.json()
+            alert(JSON.stringify(response))
+
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    // Mandar señal a la API para que abra la casa
+    async function cerrarPortonApi() {
+        try {
+            const result = await fetch(`${domogram_api_endpoint}/dispositivo/puertas`, {
+                method: 'put',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    // Abrir puerta
+                    "parametros": {
+                        "dato_serial": "S",
+                        "abierto": false
+                    }
+                })
+            })
+
+            const response = await result.json()
+            alert(JSON.stringify(response))
+
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    function handlePortonButton() {
+        // Si la casa está abierta, cierrala.
         if (casa.abierta) {
             setCasa({
                 abierta: false,
@@ -77,8 +129,10 @@ const HomeScreen = ({ navigation }) => {
                 />,
                 isLoading: false,
             })
+            cerrarPortonApi()
         }
 
+        // De lo contrario, abrela.
         else {
             setCasa({
                 abierta: true,
@@ -106,6 +160,7 @@ const HomeScreen = ({ navigation }) => {
                 />,
                 isLoading: false,
             })
+            abrirPortonApi()
         }
     }
 
@@ -137,9 +192,8 @@ const HomeScreen = ({ navigation }) => {
                             <Fold size={100} color={casa.estadoColor} style={{ marginTop: 40, marginBottom: 50 }} />,
                         isLoading: true,
                     })
-                    setTimeout(() => handleButtonContent(), 5000)
+                    setTimeout(() => { handlePortonButton() }, 6000)
                     next()
-                    // setTimeout(() => alert("Listo"), 2000)
                 }}
             />
         </View>

@@ -9,11 +9,13 @@ import { useTheme } from '@react-navigation/native'
 
 import { Pulse, Bounce } from 'react-native-animated-spinkit'
 
-// Components
-import InicioButton from '../../../components/InicioButton'
+// // Components
+// import InicioButton from '../../../components/InicioButton'
 
-// SVG Components
-import RefreshIcono from '../../../resources/refresh-24px.svg'
+// // SVG Components
+// import RefreshIcono from '../../../resources/refresh-24px.svg'
+
+import { domogram_api_endpoint } from '../../../screens/config'
 
 
 const MovementScreen = ({ navigation }) => {
@@ -32,10 +34,16 @@ const MovementScreen = ({ navigation }) => {
 
     const getDistanciaApi = async () => {
         try {
-            let response = await fetch("http://www.randomnumberapi.com/api/v1.0/random?min=10&max=20&count=1")
+            let response = await fetch(`${domogram_api_endpoint}/dispositivo/ultrasonico`)
             let json = await response.json()
+            let data_parametros = await json.data.parametros
+            let distancia = await data_parametros.distancia
+
             console.log("JSON => " + json)
-            return json[0]
+            console.log("DISTANCIA => " + distancia)
+            // return json[0]
+            return distancia
+
         } catch (error) {
             console.error(error)
         }
@@ -46,7 +54,7 @@ const MovementScreen = ({ navigation }) => {
             // API Calls
             const random_dist = await getDistanciaApi()
             setUltrasonico({ distancia: random_dist })
-        }, 1000)
+        }, 2000)
     }, [])
 
     return (
@@ -55,14 +63,14 @@ const MovementScreen = ({ navigation }) => {
 
             <Text style={[styles.subtitle, { color: colors.text }]}>Actualizando la distancia del objeto más cercano por ultrasonido...</Text>
 
-            {ultrasonico.distancia >= 14 ?
+            {ultrasonico.distancia >= 12 ?
                 <Pulse size={150} color={'#1f65ff'} style={{ marginTop: 40, marginBottom: 50 }} />
                 :
                 <Bounce size={150} color={'red'} style={{ marginTop: 40, marginBottom: 50 }} />}
 
             <Text style={[styles.distanciaTexto, { color: colors.text, paddingBottom: 5 }]}>El objeto más cercano está a {ultrasonico.distancia / 100} metros.</Text>
 
-            { ultrasonico.distancia >= 14 ?
+            { ultrasonico.distancia >= 12 ?
                 <Text style={[styles.distanciaTexto, { color: 'green', paddingBottom: 5 }]}>El hogar está seguro.</Text>
                 :
                 <Text style={[styles.distanciaTexto, { color: 'red', paddingBottom: 5 }]}>Hay algo/alguien cerca.</Text>
