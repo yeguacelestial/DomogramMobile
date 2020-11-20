@@ -10,7 +10,7 @@ import {
 import { useTheme } from '@react-navigation/native'
 
 // Components
-import InicioButton from '../../../components/InicioButton'
+// import InicioButton from '../../../components/InicioButton'
 
 // SVG Components
 import CuartoIcono from '../../../resources/cuarto.svg'
