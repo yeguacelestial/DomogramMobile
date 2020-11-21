@@ -39,8 +39,7 @@ const MovementScreen = ({ navigation }) => {
             let data_parametros = await json.data.parametros
             let distancia = await data_parametros.distancia
 
-            console.log("JSON => " + json)
-            console.log("DISTANCIA => " + distancia)
+            console.log("DISTANCIA ULTRASONICO => " + distancia)
             // return json[0]
             return distancia
 

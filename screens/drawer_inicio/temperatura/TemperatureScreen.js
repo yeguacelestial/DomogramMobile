@@ -16,6 +16,8 @@ import InicioButton from '../../../components/InicioButton'
 // SVG Components
 import TemperaturaIcono from '../../../resources/ac_unit-24px.svg'
 
+import { domogram_api_endpoint } from '../../../screens/config'
+
 
 const TemperatureScreen = ({ navigation }) => {
 
@@ -23,10 +25,42 @@ const TemperatureScreen = ({ navigation }) => {
     const { colors } = useTheme()
     const theme = useTheme()
 
+    // Distancia state
+    const [sensor, setSensor] = React.useState({
+        temperatura: 0.0,
+        humedad: 0.0
+    })
+
+    const getTempHumApi = async () => {
+        try {
+            let response = await fetch(`${domogram_api_endpoint}/dispositivo/temp-y-humedad`)
+            let json = await response.json()
+            let data_parametros = await json.data.parametros
+            let temperatura = await data_parametros.temperatura
+            let humedad = await data_parametros.humedad
+
+            console.log("TEMPERATURA => " + temperatura)
+            console.log("HUMEDAD => " + humedad)
+
+            return { temperatura, humedad }
+
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    React.useEffect(() => {
+        setInterval(async () => {
+            // API Calls
+            const { temperatura, humedad } = await getTempHumApi()
+            setSensor({ temperatura: temperatura, humedad: humedad })
+        }, 5000)
+    }, [])
+
     // RN SVG Charts
     const contentInsent = { top: 20, bottom: 20 }
 
-    const [sensor, setSensor] = React.useState({
+    const [sensorDatos, setSensorDatos] = React.useState({
         temperatura: [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20]
     })
 
@@ -49,7 +83,7 @@ const TemperatureScreen = ({ navigation }) => {
             <View style={{ height: 200, flexDirection: 'row' }}>
                 <YAxis
                     // data={data}
-                    data={sensor.temperatura}
+                    data={sensorDatos.temperatura}
                     contentInsent={contentInsent}
                     svg={{
                         fill: colors.text,
@@ -60,7 +94,7 @@ const TemperatureScreen = ({ navigation }) => {
                 />
                 <LineChart
                     style={{ flex: 1, marginLeft: 16 }}
-                    data={sensor.temperatura}
+                    data={sensorDatos.temperatura}
                     svg={{ stroke: 'rgb(134, 65, 244)', strokeWidth: 3 }}
                     contentInsent={contentInsent}
                 >
@@ -81,7 +115,7 @@ const TemperatureScreen = ({ navigation }) => {
                 color: theme.dark ? colors.text : '#694fad',
                 fontWeight: 'bold'
             }]}>
-                Temperatura actual: 10°C</Text>
+                Temperatura actual: {sensor.temperatura} °C</Text>
 
             <Text style={[styles.subtitle,
             {
@@ -89,24 +123,7 @@ const TemperatureScreen = ({ navigation }) => {
                 fontWeight: 'bold',
                 paddingBottom: 20
             }]}>
-                Humedad: 50%</Text>
-
-            <InicioButton
-                customBackgroundColor="#694fad"
-                customText={"Actualizar temp. y humedad"}
-                customImage={<TemperaturaIcono
-                    width={40}
-                    height={40}
-                    style={{ color: 'white' }}
-                />}
-
-                handlePress={next => {
-                    // alert("Actualizando temperatura y humedad...")
-                    actualizarTemperatura()
-                    next()
-                    // setTimeout(() => alert("Listo"), 2000)
-                }}
-            />
+                Humedad: {sensor.humedad} %</Text>
 
         </View>
     )
