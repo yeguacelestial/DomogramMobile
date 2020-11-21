@@ -10,9 +10,6 @@ import { useTheme } from '@react-navigation/native'
 // React native svg charts
 import { LineChart, YAxis, Grid } from 'react-native-svg-charts'
 
-// Components
-import InicioButton from '../../../components/InicioButton'
-
 // SVG Components
 import TemperaturaIcono from '../../../resources/ac_unit-24px.svg'
 
