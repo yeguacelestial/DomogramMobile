@@ -28,6 +28,10 @@ const TemperatureScreen = ({ navigation }) => {
         humedad: 0.0
     })
 
+    const [sensorDatos, setSensorDatos] = React.useState({
+        temperatura: [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20]
+    })
+
     const getTempHumApi = async () => {
         try {
             let response = await fetch(`${domogram_api_endpoint}/dispositivo/temp-y-humedad`)
@@ -51,25 +55,19 @@ const TemperatureScreen = ({ navigation }) => {
             // API Calls
             const { temperatura, humedad } = await getTempHumApi()
             setSensor({ temperatura: temperatura, humedad: humedad })
-        }, 5000)
+
+            let updateTemperaturaArray = sensorDatos.temperatura
+            updateTemperaturaArray.shift()
+            updateTemperaturaArray.push(temperatura)
+
+            setSensorDatos({
+                temperatura: updateTemperaturaArray
+            })
+        }, 6450)
     }, [])
 
     // RN SVG Charts
     const contentInsent = { top: 20, bottom: 20 }
-
-    const [sensorDatos, setSensorDatos] = React.useState({
-        temperatura: [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20]
-    })
-
-    function actualizarTemperatura() {
-        // Este arreglo debe ser sacado de la API.
-        // TODO: Crear un endpoint para conseguir las 14 últimas temperaturas
-        let temperatura_aleatoria = Array.from({ length: 14 }, () => Math.floor(Math.random() * 14))
-
-        setSensor({
-            temperatura: temperatura_aleatoria
-        })
-    }
 
     return (
         <View style={styles.container}>
@@ -84,7 +82,7 @@ const TemperatureScreen = ({ navigation }) => {
                     contentInsent={contentInsent}
                     svg={{
                         fill: colors.text,
-                        fontSize: 10
+                        fontSize: 13
                     }}
                     numberOfTicks={10}
                     formatLabel={(value) => `${value}°C`}

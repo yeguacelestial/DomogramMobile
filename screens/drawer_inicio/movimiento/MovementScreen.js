@@ -53,7 +53,7 @@ const MovementScreen = ({ navigation }) => {
             // API Calls
             const random_dist = await getDistanciaApi()
             setUltrasonico({ distancia: random_dist })
-        }, 2000)
+        }, 3550)
     }, [])
 
     return (
