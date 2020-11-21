@@ -51,9 +51,9 @@ const MovementScreen = ({ navigation }) => {
     React.useEffect(() => {
         setInterval(async () => {
             // API Calls
-            const random_dist = await getDistanciaApi()
-            setUltrasonico({ distancia: random_dist })
-        }, 3550)
+            const dist_api = await getDistanciaApi()
+            setUltrasonico({ distancia: dist_api })
+        }, 2550)
     }, [])
 
     return (
@@ -62,17 +62,17 @@ const MovementScreen = ({ navigation }) => {
 
             <Text style={[styles.subtitle, { color: colors.text }]}>Actualizando la distancia del objeto más cercano por ultrasonido...</Text>
 
-            {ultrasonico.distancia >= 12 ?
+            {ultrasonico.distancia >= 20 ?
                 <Pulse size={150} color={'#1f65ff'} style={{ marginTop: 40, marginBottom: 50 }} />
                 :
                 <Bounce size={150} color={'red'} style={{ marginTop: 40, marginBottom: 50 }} />}
 
             <Text style={[styles.distanciaTexto, { color: colors.text, paddingBottom: 5 }]}>El objeto más cercano está a {ultrasonico.distancia / 100} metros.</Text>
 
-            { ultrasonico.distancia >= 12 ?
-                <Text style={[styles.distanciaTexto, { color: 'green', paddingBottom: 5 }]}>El hogar está seguro.</Text>
+            { ultrasonico.distancia >= 20 ?
+                <Text style={[styles.distanciaTexto, { color: 'green', paddingBottom: 5 }]}>No hay movimiento cercano.</Text>
                 :
-                <Text style={[styles.distanciaTexto, { color: 'red', paddingBottom: 5 }]}>Hay algo/alguien cerca.</Text>
+                <Text style={[styles.distanciaTexto, { color: 'red', paddingBottom: 5 }]}>Hay algo/alguien cerca, o la casa está cerrada.</Text>
             }
 
             {/* <InicioButton
