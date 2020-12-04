@@ -2,7 +2,8 @@ import React from 'react'
 import {
     View,
     StyleSheet,
-    Alert
+    Alert,
+    Linking
 } from 'react-native'
 
 import {
@@ -123,7 +124,8 @@ const DrawerContent = (props) => {
                             label="Soporte"
                             onPress={() => {
                                 // props.navigation.navigate('Temperatura y humedad')
-                                Alert.alert("En progreso...", "La vista de soporte servirá para poder contactar al desarrollador en caso de que el usuario tenga alguna duda.")
+                                Alert.alert("Telegram", "Redirigiendo al contacto del desarrollador...")
+                                Linking.openURL('http://t.me/hombrecelestial')
                             }}
                         />
                     </Drawer.Section>

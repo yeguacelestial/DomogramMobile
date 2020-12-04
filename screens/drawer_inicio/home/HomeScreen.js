@@ -67,7 +67,7 @@ const HomeScreen = ({ navigation }) => {
             })
 
             const response = await result.json()
-            alert(JSON.stringify(response))
+            // alert(JSON.stringify(response))
 
         } catch (error) {
             console.error(error)
@@ -93,7 +93,7 @@ const HomeScreen = ({ navigation }) => {
             })
 
             const response = await result.json()
-            alert(JSON.stringify(response))
+            // alert(JSON.stringify(response))
 
         } catch (error) {
             console.error(error)
@@ -169,7 +169,7 @@ const HomeScreen = ({ navigation }) => {
             {/* <StatusBar barStyle={theme.dark ? "light-content" : "dark-content"} /> */}
             <Text style={[styles.title, { color: colors.text }]}>Domogram</Text>
 
-            <Text style={[styles.subtitle, { color: colors.text }]}>Gestiona tu hogar, desde cualquier lugar del mundo.</Text>
+            <Text style={[styles.subtitle, { color: colors.text }]}>Gestiona tu hogar, desde cualquier parte del mundo.</Text>
 
             {/* Home Icon */}
             {casa.estadoIcon}
