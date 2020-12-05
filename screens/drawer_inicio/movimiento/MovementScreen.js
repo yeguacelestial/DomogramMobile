@@ -69,21 +69,21 @@ const MovementScreen = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Text style={[styles.title, { color: colors.text }]}>Capturando movimiento...</Text>
+            <Text style={[styles.title, { color: colors.text }]}>{i18n.t('movimiento1')}</Text>
 
-            <Text style={[styles.subtitle, { color: colors.text }]}>Actualizando la distancia del objeto más cercano por ultrasonido...</Text>
+            <Text style={[styles.subtitle, { color: colors.text }]}>{i18n.t('movimiento2')}</Text>
 
             {ultrasonico.distancia >= 20 ?
                 <Pulse size={150} color={'#1f65ff'} style={{ marginTop: 40, marginBottom: 50 }} />
                 :
                 <Bounce size={150} color={'red'} style={{ marginTop: 40, marginBottom: 50 }} />}
 
-            <Text style={[styles.distanciaTexto, { color: colors.text, paddingBottom: 5 }]}>El objeto más cercano está a {ultrasonico.distancia / 100} metros.</Text>
+            <Text style={[styles.distanciaTexto, { color: colors.text, paddingBottom: 5 }]}>{i18n.t('movimiento3')} {ultrasonico.distancia / 100} m.</Text>
 
             { ultrasonico.distancia >= 20 ?
-                <Text style={[styles.distanciaTexto, { color: 'green', paddingBottom: 5 }]}>No hay movimiento cercano.</Text>
+                <Text style={[styles.distanciaTexto, { color: 'green', paddingBottom: 5 }]}>{i18n.t('movimiento5')}</Text>
                 :
-                <Text style={[styles.distanciaTexto, { color: 'red', paddingBottom: 5 }]}>Hay algo/alguien cerca, o la casa está cerrada.</Text>
+                <Text style={[styles.distanciaTexto, { color: 'red', paddingBottom: 5 }]}>{i18n.t('movimiento4')}</Text>
             }
 
             {/* <InicioButton

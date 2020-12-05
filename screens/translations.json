@@ -46,7 +46,12 @@
         "home5": "Abriendo casa..",
         "home55": "Cerrando casa...",
         "home6": "La casa está abierta.",
-        "home7": "Cerrar portón principal."
+        "home7": "Cerrar portón principal.",
+        "movimiento1": "Capturando movimiento...",
+        "movimiento2": "Actualizando la distancia del objeto más cercano por ultrasonido...",
+        "movimiento3": "El objeto más cercano está a ",
+        "movimiento4": "Hay un objeto cerca del sensor ultrasónico.",
+        "movimiento5": "No hay movimiento cercano."
     },
     "en": {
         "splash1": "Domogram, your domestical partner.",
@@ -95,6 +100,11 @@
         "home5": "Opening the front door...",
         "home55": "Closing the front door...",
         "home6": "House is currently open.",
-        "home7": "Close front door"
+        "home7": "Close front door",
+        "movimiento1": "Capturing movement...",
+        "movimiento2": "Updating the distance of the nearest object using ultrasonic sensor...",
+        "movimiento3": "Nearest object is: ",
+        "movimiento4": "There is an object near the front-door.",
+        "movimiento5": "Don't panic. Didn't found any object near me."
     }
 }
