@@ -17,19 +17,11 @@ import { useTheme } from '@react-navigation/native'
 import * as Localization from 'expo-localization'
 import i18n from 'i18n-js'
 
+import { en, es } from './translations.json'
+
 
 // Traducciones dependiendo del lenguaje
-i18n.translations = {
-    es: {
-        splash1: "Domogram, tu asistente doméstico",
-        splash2: "Accede para adminitrar tu hogar desde tu móvil."
-    },
-
-    en: {
-        splash1: "Domogram, your domestical partner.",
-        splash2: "Please, log in so you can access the great features of Domogram."
-    }
-}
+i18n.translations = { en, es }
 
 // Set the locale once at the beginning of the app
 i18n.locale = Localization.locale

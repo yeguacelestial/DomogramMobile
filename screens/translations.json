@@ -1,0 +1,24 @@
+{
+    "es": {
+        "splash1": "Domogram, tu asistente doméstico",
+        "splash2": "Accede para adminitrar tu hogar desde tu móvil.",
+        "login1": "¡Bienvenido a Domogram!",
+        "login2": "Correo electrónico",
+        "login3": "Tu correo aquí",
+        "login4": "Contraseña",
+        "login5": "Tu contraseña aquí",
+        "login6": "Iniciar sesión",
+        "login7": "Regístrate"
+    },
+    "en": {
+        "splash1": "Domogram, your domestical partner.",
+        "splash2": "Please, log in so you can access the great features of Domogram.",
+        "login1": "Welcome to Domogram!",
+        "login2": "E-mail",
+        "login3": "Your e-mail here",
+        "login4": "Password",
+        "login5": "Your password here",
+        "login6": "Log In",
+        "login7": "Sign Up"
+    }
+}

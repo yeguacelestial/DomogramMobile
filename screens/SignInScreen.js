@@ -22,6 +22,42 @@ import * as Animatable from 'react-native-animatable'
 import { AuthContext } from '../components/context'
 
 
+// TRANSLATIONS
+import * as Localization from 'expo-localization'
+import i18n from 'i18n-js'
+
+
+// Traducciones dependiendo del lenguaje
+i18n.translations = {
+    ...i18n.translations.en,
+    es: {
+        login1: "¡Bienvenido a Domogram!",
+        login2: "Correo electrónico",
+        login3: "Tu correo aquí",
+        login4: "Contraseña",
+        login5: "Tu contraseña aquí",
+        login6: "Iniciar sesión",
+        login7: "Regístrate",
+    },
+
+    en: {
+        login1: "Welcome to Domogram!",
+        login2: "E-mail",
+        login3: "Your e-mail here",
+        login4: "Password",
+        login5: "Your password here",
+        login6: "Log In",
+        login7: "Sign Up",
+    }
+}
+
+// Set the locale once at the beginning of the app
+// i18n.locale = Localization.locale
+
+// When a value is missing from a language it'll fallback to another language with the key present.
+i18n.fallbacks = true;
+
+
 const SignInScreen = ({ navigation }) => {
 
     /* States */
@@ -87,7 +123,10 @@ const SignInScreen = ({ navigation }) => {
 
             {/* Header */}
             <View style={styles.header}>
-                <Text style={styles.text_header}>¡Bienvenido a Domogram!</Text>
+                <Text style={styles.text_header}>
+                    {/* ¡Bienvenido a Domogram! */}
+                    {i18n.t('login1')}
+                </Text>
             </View>
 
             {/* Footer */}
@@ -97,7 +136,10 @@ const SignInScreen = ({ navigation }) => {
             >
 
                 {/* Correo electrónico field */}
-                <Text style={[styles.text_footer, { color: colors.text }]}>Correo electrónico</Text>
+                <Text style={[styles.text_footer, { color: colors.text }]}>
+                    {/* Correo electrónico */}
+                    {i18n.t('login2')}
+                </Text>
                 <View style={styles.action}>
                     <FontAwesome
                         name="user-o"
@@ -106,7 +148,7 @@ const SignInScreen = ({ navigation }) => {
 
                     {/* Placeholder */}
                     <TextInput
-                        placeholder="Tu correo aquí"
+                        placeholder={i18n.t('login3')}
                         placeholderTextColor="#666666"
                         style={[styles.textInput, { color: colors.text }]}
                         autoCapitalize="none"
@@ -130,7 +172,8 @@ const SignInScreen = ({ navigation }) => {
 
                 {/* Contraseña field */}
                 <Text style={[styles.text_footer, { marginTop: 35 }, { color: colors.text }]}>
-                    Contraseña
+                    {/* Contraseña */}
+                    {i18n.t('login4')}
                 </Text>
                 <View style={styles.action}>
                     <AntDesign
@@ -181,7 +224,10 @@ const SignInScreen = ({ navigation }) => {
                             colors={['#08d4c4', '#01ab9d']}
                             style={styles.signIn}
                         >
-                            <Text style={[styles.textSign, { color: 'white' }]}>Iniciar sesión</Text>
+                            <Text style={[styles.textSign, { color: 'white' }]}>
+                                {/* Iniciar sesión */}
+                                {i18n.t('login6')}
+                            </Text>
                         </LinearGradient>
                     </TouchableOpacity>
 
@@ -194,7 +240,8 @@ const SignInScreen = ({ navigation }) => {
                         }]}
                     >
                         <Text style={[styles.textSign, { color: '#009387' }]}>
-                            Regístrate
+                            {/* Regístrate */}
+                            {i18n.t('login7')}
                         </Text>
                     </TouchableOpacity>
                 </View>
