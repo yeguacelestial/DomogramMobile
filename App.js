@@ -40,6 +40,18 @@ LogBox.ignoreAllLogs(true)
 
 const Drawer = createDrawerNavigator()
 
+// TRANSLATIONS
+import i18n from 'i18n-js'
+
+import { en, es } from './screens/translations.json'
+
+// Traducciones dependiendo del lenguaje
+i18n.translations = { en, es }
+
+// When a value is missing from a language it'll fallback to another language with the key present.
+i18n.fallbacks = true
+
+
 const App = () => {
 
   // Dark mode state
@@ -163,35 +175,41 @@ const App = () => {
           // Handling different types of responses
           if (result.ok && response.success) {
             console.log(JSON.stringify(response))
-            Alert.alert('¡Hola!', response_value)
+            Alert.alert(i18n.t('saludo1'), i18n.t('saludo2'))
+            dispatch({
+              type: 'LOGIN',
+              id: email,
+              token: userToken
+            })
 
           } else if (result.ok && response.error) {
             console.log(JSON.stringify(response))
-            Alert.alert('Algo salió mal', response_value)
+            // Alert.alert('Algo salió mal', response_value)
+            Alert.alert(i18n.t('algomalo1'), i18n.t('algomalo2'))
             return
 
           } else {
             console.log(JSON.stringify(response))
-            Alert.alert('Algo salió mal', 'Hay un problema con la API. Por favor, contacta al desarrollador.')
+            Alert.alert(i18n.t('algomalo1'), i18n.t('algomalo3'))
             return
           }
 
         } catch (e) {
           console.log(e)
-          Alert.alert('Algo salió mal', 'Whoops! Algo salió mal al enviar tus datos.')
+          Alert.alert(i18n.t('algomalo1'), i18n.t('algomalo2'))
           return
         }
       }
 
       else {
-        Alert.alert('¿Se te olvida algo?', 'Por favor, llena los campos requeridos.')
+        Alert.alert(i18n.t('login8'), i18n.t('login9'))
       }
 
-      dispatch({
-        type: 'LOGIN',
-        id: email,
-        token: userToken
-      })
+      // dispatch({
+      //   type: 'LOGIN',
+      //   id: email,
+      //   token: userToken
+      // })
     },
 
     // Removing userToken from async storage

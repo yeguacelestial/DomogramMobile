@@ -22,6 +22,17 @@ import * as Animatable from 'react-native-animatable'
 
 import { domogram_api_endpoint } from './config'
 
+// TRANSLATIONS
+import i18n from 'i18n-js'
+
+import { en, es } from './translations.json'
+
+// Traducciones dependiendo del lenguaje
+i18n.translations = { en, es }
+
+// When a value is missing from a language it'll fallback to another language with the key present.
+i18n.fallbacks = true
+
 
 const SignUpScreen = ({ navigation }) => {
 
@@ -127,19 +138,18 @@ const SignUpScreen = ({ navigation }) => {
             } else if (result.ok && response.error) {
                 console.log(JSON.stringify(response))
                 Alert.alert('Algo salió mal', response_value)
-
             } else {
                 console.log(JSON.stringify(response))
-                Alert.alert('Algo salió mal', 'Hay un problema con la API. Por favor, contacta al desarrollador.')
+                Alert.alert(i18n.t('login8'), i18n.t('login9'))
             }
         }
 
         else if (data.password !== data.confirm_password) {
-            Alert.alert('¡Tu contraseña no coincide!', 'Asegúrate de haber confirmado tu contraseña correctamente.')
+            Alert.alert(i18n.t('password_error1'), i18n.t('password_error2'))
         }
 
         else {
-            Alert.alert('Error al registrarse', 'Por favor, llena los campos requeridos.')
+            Alert.alert(i18n.t('login8'), i18n.t('login9'))
         }
     }
 
@@ -151,7 +161,10 @@ const SignUpScreen = ({ navigation }) => {
 
             {/* Header */}
             <View style={styles.header}>
-                <Text style={styles.text_header}>Registrate ahora para acceder a Domogram</Text>
+                <Text style={styles.text_header}>
+                    {/* Registrate ahora para acceder a Domogram */}
+                    {i18n.t('registrate1')}
+                </Text>
             </View>
 
             {/* Footer */}
@@ -161,7 +174,10 @@ const SignUpScreen = ({ navigation }) => {
             >
 
                 {/* Correo electrónico field */}
-                <Text style={[styles.text_footer, { color: colors.text }]}>Correo electrónico</Text>
+                <Text style={[styles.text_footer, { color: colors.text }]}>
+                    {/* Correo electrónico */}
+                    {i18n.t('registrate2')}
+                </Text>
                 <View style={styles.action}>
                     <FontAwesome
                         name="user-o"
@@ -170,7 +186,7 @@ const SignUpScreen = ({ navigation }) => {
 
                     {/* Placeholder */}
                     <TextInput
-                        placeholder="Tu correo aquí"
+                        placeholder={i18n.t('registrate3')}
                         placeholderTextColor="#666666"
                         style={[styles.textInput, { color: colors.text }]}
                         autoCapitalize="none"
@@ -194,7 +210,8 @@ const SignUpScreen = ({ navigation }) => {
 
                 {/* Contraseña field */}
                 <Text style={[styles.text_footer, { color: colors.text, marginTop: 35 }]}>
-                    Contraseña
+                    {/* Contraseña */}
+                    {i18n.t('registrate4')}
                 </Text>
                 <View style={styles.action}>
                     <AntDesign
@@ -205,7 +222,7 @@ const SignUpScreen = ({ navigation }) => {
 
                     {/* Placeholder */}
                     <TextInput
-                        placeholder="Tu contraseña aquí"
+                        placeholder={i18n.t('registrate5')}
                         placeholderTextColor="#666666"
                         secureTextEntry={data.secureTextEntry ? true : false}
                         style={[styles.textInput, { color: colors.text }]}
@@ -235,7 +252,8 @@ const SignUpScreen = ({ navigation }) => {
 
                 {/* Confirmar contraseña field */}
                 <Text style={[styles.text_footer, { color: colors.text, marginTop: 35 }]}>
-                    Confirmar contraseña
+                    {/* Confirmar contraseña */}
+                    {i18n.t('registrate6')}
                 </Text>
                 <View style={styles.action}>
                     <AntDesign
@@ -246,7 +264,7 @@ const SignUpScreen = ({ navigation }) => {
 
                     {/* Placeholder */}
                     <TextInput
-                        placeholder="Confirma tu contraseña aquí"
+                        placeholder={i18n.t('registrate7')}
                         placeholderTextColor="#666666"
                         secureTextEntry={data.confirm_secureTextEntry ? true : false}
                         style={[styles.textInput, { color: colors.text }]}
@@ -284,7 +302,9 @@ const SignUpScreen = ({ navigation }) => {
                             colors={['#08d4c4', '#01ab9d']}
                             style={styles.signIn}
                         >
-                            <Text style={[styles.textSign, { color: 'white' }]}>Registrame ahora</Text>
+                            <Text style={[styles.textSign, { color: 'white' }]}>
+                                {i18n.t('registrate8')}
+                            </Text>
                         </LinearGradient>
                     </TouchableOpacity>
 
@@ -297,7 +317,8 @@ const SignUpScreen = ({ navigation }) => {
                         }]}
                     >
                         <Text style={[styles.textSign, { color: '#009387' }]}>
-                            ¿Ya tienes cuenta? Inicia sesión
+                            {/* ¿Ya tienes cuenta? Inicia sesión */}
+                            {i18n.t('registrate9')}
                         </Text>
                     </TouchableOpacity>
                 </View>
