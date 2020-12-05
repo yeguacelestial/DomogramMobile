@@ -38,7 +38,15 @@
         "home": "Hogar",
         "movimiento": "Movimiento",
         "luces": "Luces",
-        "temperatura": "Temperatura"
+        "temperatura": "Temperatura",
+        "home1": "Gestiona tu hogar, desde cualquier parte del mundo.",
+        "home2": "La casa está cerrada.",
+        "home3": "Abre el portón principal para una mejor experiencia con Domogram.",
+        "home4": "Abrir portón principal",
+        "home5": "Abriendo casa..",
+        "home55": "Cerrando casa...",
+        "home6": "La casa está abierta.",
+        "home7": "Cerrar portón principal."
     },
     "en": {
         "splash1": "Domogram, your domestical partner.",
@@ -79,6 +87,14 @@
         "home": "Home",
         "movimiento": "Movement",
         "luces": "Lights",
-        "temperatura": "Temperature"
+        "temperatura": "Temperature",
+        "home1": "Have control over your home, anywhere.",
+        "home2": "House is currently closed.",
+        "home3": "For a better experience with Domogram, open the front door.",
+        "home4": "Open front door",
+        "home5": "Opening the front door...",
+        "home55": "Closing the front door...",
+        "home6": "House is currently open.",
+        "home7": "Close front door"
     }
 }

@@ -17,6 +17,17 @@ import { Pulse, Bounce } from 'react-native-animated-spinkit'
 
 import { domogram_api_endpoint } from '../../../screens/config'
 
+// TRANSLATIONS
+import i18n from 'i18n-js'
+
+import { en, es } from '../../translations.json'
+
+// Traducciones dependiendo del lenguaje
+i18n.translations = { en, es }
+
+// When a value is missing from a language it'll fallback to another language with the key present.
+i18n.fallbacks = true
+
 
 const MovementScreen = ({ navigation }) => {
 

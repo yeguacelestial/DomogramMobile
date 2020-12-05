@@ -21,12 +21,23 @@ import InicioButton from '../../../components/InicioButton'
 import HomeOff from '../../../resources/no_meeting_room-24px.svg'
 import HomeOn from '../../../resources/meeting_room-24px.svg'
 
+// TRANSLATIONS
+import i18n from 'i18n-js'
+
+import { en, es } from '../../translations.json'
+
+// Traducciones dependiendo del lenguaje
+i18n.translations = { en, es }
+
+// When a value is missing from a language it'll fallback to another language with the key present.
+i18n.fallbacks = true
+
 
 const HomeScreen = ({ navigation }) => {
     /* Casa States */
     const [casa, setCasa] = React.useState({
         abierta: false,
-        estadoTexto: 'La casa está cerrada.',
+        estadoTexto: i18n.t('home2'),
         estadoColor: '#009387',
         estadoIcon:
             <HomeOff
@@ -35,7 +46,7 @@ const HomeScreen = ({ navigation }) => {
                 style={{ color: '#009387', paddingTop: 240 }}
             />,
 
-        botonText: 'Abrir portón principal',
+        botonText: i18n.t('home4'),
         botonColor: '#009387',
         botonIcon: <HomeOn
             width={40}
@@ -105,7 +116,7 @@ const HomeScreen = ({ navigation }) => {
         if (casa.abierta) {
             setCasa({
                 abierta: false,
-                estadoTexto: 'La casa está cerrada.',
+                estadoTexto: i18n.t('home2'),
                 estadoColor: '#009387',
                 estadoIcon:
                     <Animatable.View
@@ -120,7 +131,7 @@ const HomeScreen = ({ navigation }) => {
                         />
                     </Animatable.View>,
 
-                botonText: 'Abrir portón principal',
+                botonText: i18n.t('home4'),
                 botonColor: '#009387',
                 botonIcon: <HomeOn
                     width={40}
@@ -136,7 +147,7 @@ const HomeScreen = ({ navigation }) => {
         else {
             setCasa({
                 abierta: true,
-                estadoTexto: 'La casa está abierta.',
+                estadoTexto: i18n.t('home6'),
                 estadoColor: 'red',
                 estadoIcon:
                     <Animatable.View
@@ -151,7 +162,7 @@ const HomeScreen = ({ navigation }) => {
                         />
                     </Animatable.View>,
 
-                botonText: 'Cerrar portón principal',
+                botonText: i18n.t('home7'),
                 botonColor: 'red',
                 botonIcon: <HomeOff
                     width={40}
@@ -169,13 +180,19 @@ const HomeScreen = ({ navigation }) => {
             {/* <StatusBar barStyle={theme.dark ? "light-content" : "dark-content"} /> */}
             <Text style={[styles.title, { color: colors.text }]}>Domogram</Text>
 
-            <Text style={[styles.subtitle, { color: colors.text }]}>Gestiona tu hogar, desde cualquier parte del mundo.</Text>
+            <Text style={[styles.subtitle, { color: colors.text }]}>
+                {/* Gestiona tu hogar, desde cualquier parte del mundo. */}
+                {i18n.t('home1')}
+            </Text>
 
             {/* Home Icon */}
             {casa.estadoIcon}
             <Text style={[styles.homeStateText, { color: casa.estadoColor }]}>{casa.estadoTexto}</Text>
 
-            <Text style={[styles.text, { color: colors.text, paddingBottom: 10 }]}>Abre el portón principal para una mejor experiencia con Domogram.</Text>
+            <Text style={[styles.text, { color: colors.text, paddingBottom: 10 }]}>
+                {/* Abre el portón principal para una mejor experiencia con Domogram. */}
+                {i18n.t('home3')}
+            </Text>
 
             <InicioButton
                 customBackgroundColor={casa.botonColor}
@@ -187,7 +204,7 @@ const HomeScreen = ({ navigation }) => {
                         ...casa,
                         botonIcon: <Text> </Text>,
                         botonText: <Wave size={38} color='#FFF' style={{ paddingLeft: -40 }} />,
-                        estadoTexto: casa.abierta ? 'Cerrando casa...' : 'Abriendo casa...',
+                        estadoTexto: casa.abierta ? i18n.t('home55') : i18n.t('home5'),
                         estadoIcon:
                             <Fold size={100} color={casa.estadoColor} style={{ marginTop: 40, marginBottom: 50 }} />,
                         isLoading: true,
