@@ -27,7 +27,14 @@
         "password_error1": "¡Tu contraseña no coincide!",
         "password_error2": "Asegúrate de haber confirmado tu contraseña correctamente.",
         "saludo1": "¡Hola!",
-        "saludo2": "Bienvenido a Domogram."
+        "saludo2": "Bienvenido a Domogram.",
+        "burguer1": "Tu asistente doméstico",
+        "burguer2": "Desarrollado por ",
+        "burguer3": "Inicio",
+        "burguer4": "Soporte",
+        "burguer5": "Preferencias",
+        "burguer6": "Modo oscuro",
+        "burguer7": "Cerrar sesión"
     },
     "en": {
         "splash1": "Domogram, your domestical partner.",
@@ -57,6 +64,13 @@
         "password_error1": "Your passwords didn't match!",
         "password_error2": "Please, confirm your password correctly.",
         "saludo1": "Hello!",
-        "saludo2": "Welcome to Domogram."
+        "saludo2": "Welcome to Domogram.",
+        "burguer1": "Your domestical partner",
+        "burguer2": "Developed by ",
+        "burguer3": "Start here",
+        "burguer4": "Support",
+        "burguer5": "Preferences",
+        "burguer6": "Dark mode",
+        "burguer7": "Log out"
     }
 }

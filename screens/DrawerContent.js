@@ -27,6 +27,17 @@ import { MaterialCommunityIcons } from '@expo/vector-icons'
 
 import { AuthContext } from '../components/context'
 
+// TRANSLATIONS
+import i18n from 'i18n-js'
+
+import { en, es } from './translations.json'
+
+// Traducciones dependiendo del lenguaje
+i18n.translations = { en, es }
+
+// When a value is missing from a language it'll fallback to another language with the key present.
+i18n.fallbacks = true
+
 
 const DrawerContent = (props) => {
 
@@ -50,7 +61,7 @@ const DrawerContent = (props) => {
 
                             <View style={{ marginLeft: 15, flexDirection: 'column' }}>
                                 <Title style={styles.title}>Domogram</Title>
-                                <Caption style={styles.caption}>Tu asistente doméstico</Caption>
+                                <Caption style={styles.caption}>{i18n.t('burguer1')}</Caption>
                             </View>
 
                         </View>
@@ -59,7 +70,7 @@ const DrawerContent = (props) => {
 
                             {/* Following section */}
                             <View style={styles.section}>
-                                <Paragraph style={[styles.paragraph, styles.caption]}>Desarrollado por</Paragraph>
+                                <Paragraph style={[styles.paragraph, styles.caption]}>{i18n.t('burguer2')}</Paragraph>
                                 <Caption style={styles.caption}>Carlos Nava</Caption>
                             </View>
 
@@ -77,7 +88,7 @@ const DrawerContent = (props) => {
                                     size={size}
                                 />
                             )}
-                            label="Inicio"
+                            label={i18n.t('burguer3')}
                             onPress={() => {
                                 props.navigation.navigate('Home') /* 'Home' screen on MainTabScreen */
                             }}
@@ -121,7 +132,7 @@ const DrawerContent = (props) => {
                                     size={size}
                                 />
                             )}
-                            label="Soporte"
+                            label={i18n.t('burguer4')}
                             onPress={() => {
                                 // props.navigation.navigate('Temperatura y humedad')
                                 Alert.alert("Telegram", "Redirigiendo al contacto del desarrollador...")
@@ -131,12 +142,12 @@ const DrawerContent = (props) => {
                     </Drawer.Section>
 
                     {/* Preferencias */}
-                    <Drawer.Section title="Preferencias">
+                    <Drawer.Section title={i18n.t('burguer5')}>
 
                         {/* Opcion 'Modo oscuro' */}
                         <TouchableRipple onPress={() => { toggleTheme() }}>
                             <View style={styles.preference}>
-                                <Text>Modo oscuro</Text>
+                                <Text>{i18n.t('burguer6')}</Text>
 
                                 {/* Switch modo oscuro */}
                                 <View pointerEvents="none">
@@ -162,7 +173,7 @@ const DrawerContent = (props) => {
                             size={size}
                         />
                     )}
-                    label="Cerrar sesión"
+                    label={i18n.t('burguer7')}
                     onPress={() => { signOut() }}
                 />
             </Drawer.Section>
