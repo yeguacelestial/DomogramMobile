@@ -69,7 +69,10 @@ const SplashScreen = ({ navigation }) => {
                             colors={['#08d4c4', '#01ab9d']}
                             style={styles.signIn}
                         >
-                            <Text style={styles.textSign}>Empezar</Text>
+                            <Text style={styles.textSign}>
+                                {/* Empezar */}
+                                {i18n.t('splash3')}
+                            </Text>
                             <AntDesign name="right" size={20} color="white" />
                         </LinearGradient>
                     </TouchableOpacity>

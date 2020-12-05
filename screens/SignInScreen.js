@@ -23,33 +23,14 @@ import { AuthContext } from '../components/context'
 
 
 // TRANSLATIONS
-import * as Localization from 'expo-localization'
+// import * as Localization from 'expo-localization'
 import i18n from 'i18n-js'
+
+import { en, es } from './translations.json'
 
 
 // Traducciones dependiendo del lenguaje
-i18n.translations = {
-    ...i18n.translations.en,
-    es: {
-        login1: "¡Bienvenido a Domogram!",
-        login2: "Correo electrónico",
-        login3: "Tu correo aquí",
-        login4: "Contraseña",
-        login5: "Tu contraseña aquí",
-        login6: "Iniciar sesión",
-        login7: "Regístrate",
-    },
-
-    en: {
-        login1: "Welcome to Domogram!",
-        login2: "E-mail",
-        login3: "Your e-mail here",
-        login4: "Password",
-        login5: "Your password here",
-        login6: "Log In",
-        login7: "Sign Up",
-    }
-}
+i18n.translations = { en, es }
 
 // Set the locale once at the beginning of the app
 // i18n.locale = Localization.locale
@@ -184,7 +165,7 @@ const SignInScreen = ({ navigation }) => {
 
                     {/* Placeholder */}
                     <TextInput
-                        placeholder="Tu contraseña aquí"
+                        placeholder={i18n.t('login5')}
                         placeholderTextColor="#666666"
                         secureTextEntry={data.secureTextEntry ? true : false}
                         style={[styles.textInput, { color: colors.text }]}
