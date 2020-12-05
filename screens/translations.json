@@ -51,7 +51,15 @@
         "movimiento2": "Actualizando la distancia del objeto más cercano por ultrasonido...",
         "movimiento3": "El objeto más cercano está a ",
         "movimiento4": "Hay un objeto cerca del sensor ultrasónico.",
-        "movimiento5": "No hay movimiento cercano."
+        "movimiento5": "No hay movimiento cercano.",
+        "luces1": "Luces del hogar",
+        "luces2": "Controla la iluminación de las distintas habitaciones",
+        "luces3": "Habitación",
+        "luces4": "Estancia",
+        "luces5": "Baño",
+        "luces6": "Cocina",
+        "luces7": "Entrada",
+        "luces8": "Comedor"
     },
     "en": {
         "splash1": "Domogram, your domestical partner.",
@@ -105,6 +113,14 @@
         "movimiento2": "Updating the distance of the nearest object using ultrasonic sensor...",
         "movimiento3": "Nearest object is: ",
         "movimiento4": "There is an object near the front-door.",
-        "movimiento5": "Don't panic. Didn't found any object near me."
+        "movimiento5": "Don't panic. Didn't found any object near me.",
+        "luces1": "House lights",
+        "luces2": "Control the enlightenment of all the house rooms.",
+        "luces3": "Bedroom",
+        "luces4": "Lounge",
+        "luces5": "Bathroom",
+        "luces6": "Kitchen",
+        "luces7": "Front-door",
+        "luces8": "Dinning room"
     }
 }

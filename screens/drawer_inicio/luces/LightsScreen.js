@@ -177,9 +177,9 @@ const LightsScreen = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Text style={[styles.title, { color: colors.text }]}>Luces del hogar</Text>
+            <Text style={[styles.title, { color: colors.text }]}>{i18n.t('luces1')}</Text>
 
-            <Text style={[styles.subtitle, { color: colors.text }]}>Controla la iluminación de las distintas habitaciones.</Text>
+            <Text style={[styles.subtitle, { color: colors.text }]}>{i18n.t('luces2')}</Text>
 
             <View style={{ flexDirection: 'row' }}>
                 <CuartoIcono
@@ -189,7 +189,7 @@ const LightsScreen = ({ navigation }) => {
                 />
 
                 <Text style={{ paddingTop: 15, paddingRight: 150, fontSize: 15, color: colors.text }}>
-                    Habitación
+                    {i18n.t('luces3')}
                 </Text>
 
                 <Switch
@@ -208,7 +208,7 @@ const LightsScreen = ({ navigation }) => {
                 />
 
                 <Text style={{ paddingTop: 10, paddingRight: 160, fontSize: 15, color: colors.text }}>
-                    Estancia
+                    {i18n.t('luces4')}
                 </Text>
 
                 <Switch
@@ -227,7 +227,7 @@ const LightsScreen = ({ navigation }) => {
                 />
 
                 <Text style={{ paddingTop: 15, paddingRight: 190, fontSize: 15, color: colors.text }}>
-                    Baño
+                    {i18n.t('luces5')}
                 </Text>
 
                 <Switch
@@ -246,7 +246,7 @@ const LightsScreen = ({ navigation }) => {
                 />
 
                 <Text style={{ paddingTop: 15, paddingRight: 180, fontSize: 15, color: colors.text }}>
-                    Cocina
+                    {i18n.t('luces6')}
                 </Text>
 
                 <Switch
@@ -265,7 +265,7 @@ const LightsScreen = ({ navigation }) => {
                 />
 
                 <Text style={{ paddingTop: 15, paddingRight: 180, fontSize: 15, color: colors.text }}>
-                    Entrada
+                    {i18n.t('luces7')}
                 </Text>
 
                 <Switch
@@ -284,7 +284,7 @@ const LightsScreen = ({ navigation }) => {
                 />
 
                 <Text style={{ paddingTop: 15, paddingRight: 170, fontSize: 15, color: colors.text }}>
-                    Comedor
+                    {i18n.t('luces8')}
                 </Text>
 
                 <Switch
