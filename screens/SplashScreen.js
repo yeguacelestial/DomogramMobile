@@ -13,6 +13,29 @@ import * as Animatable from 'react-native-animatable'
 
 import { useTheme } from '@react-navigation/native'
 
+// TRANSLATIONS
+import * as Localization from 'expo-localization'
+import i18n from 'i18n-js'
+
+
+// Traducciones dependiendo del lenguaje
+i18n.translations = {
+    es: {
+        splash1: "Domogram, tu asistente doméstico",
+        splash2: "Accede para adminitrar tu hogar desde tu móvil."
+    },
+
+    en: {
+        splash1: "Domogram, your domestical partner.",
+        splash2: "Please, log in so you can access the great features of Domogram."
+    }
+}
+
+// Set the locale once at the beginning of the app
+i18n.locale = Localization.locale
+
+// When a value is missing from a language it'll fallback to another language with the key present.
+i18n.fallbacks = true;
 
 const SplashScreen = ({ navigation }) => {
 
@@ -39,8 +62,13 @@ const SplashScreen = ({ navigation }) => {
                 ]}
                 animation="fadeInUpBig"
             >
-                <Text style={[styles.title, { color: colors.text }]}>Domogram, tu asistente doméstico</Text>
-                <Text style={[styles.text, { color: colors.text }]}>Accede para administrar tu hogar desde tu móvil</Text>
+                <Text style={[styles.title, { color: colors.text }]}>
+                    {/* Domogram, tu asistente doméstico */}
+                    {i18n.t('splash1')}
+                </Text>
+                <Text style={[styles.text, { color: colors.text }]}>
+                    {i18n.t('splash2')}
+                </Text>
 
                 {/* Botón 'Empieza' */}
                 <View style={styles.button}>
