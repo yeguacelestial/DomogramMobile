@@ -34,7 +34,11 @@
         "burguer4": "Soporte",
         "burguer5": "Preferencias",
         "burguer6": "Modo oscuro",
-        "burguer7": "Cerrar sesión"
+        "burguer7": "Cerrar sesión",
+        "home": "Hogar",
+        "movimiento": "Movimiento",
+        "luces": "Luces",
+        "temperatura": "Temperatura"
     },
     "en": {
         "splash1": "Domogram, your domestical partner.",
@@ -71,6 +75,10 @@
         "burguer4": "Support",
         "burguer5": "Preferences",
         "burguer6": "Dark mode",
-        "burguer7": "Log out"
+        "burguer7": "Log out",
+        "home": "Home",
+        "movimiento": "Movement",
+        "luces": "Lights",
+        "temperatura": "Temperature"
     }
 }

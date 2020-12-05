@@ -14,6 +14,17 @@ import { MaterialCommunityIcons } from 'react-native-vector-icons'
 import { Entypo } from '@expo/vector-icons'
 import { FontAwesome5 } from '@expo/vector-icons'
 
+// TRANSLATIONS
+import i18n from 'i18n-js'
+
+import { en, es } from './translations.json'
+
+// Traducciones dependiendo del lenguaje
+i18n.translations = { en, es }
+
+// When a value is missing from a language it'll fallback to another language with the key present.
+i18n.fallbacks = true
+
 
 const Tab = createMaterialBottomTabNavigator()
 
@@ -29,7 +40,7 @@ const MainTabScreen = () => {
                 name="Home"
                 component={HomeStackScreen}
                 options={{
-                    tabBarLabel: 'Home',
+                    tabBarLabel: i18n.t('home'),
                     tabBarColor: '#009387',
                     tabBarIcon: ({ color }) => (
                         <MaterialCommunityIcons name="home" color={color} size={26} />
@@ -41,7 +52,7 @@ const MainTabScreen = () => {
                 name="Movimiento"
                 component={MovementStackScreen}
                 options={{
-                    tabBarLabel: 'Movimiento',
+                    tabBarLabel: i18n.t('movimiento'),
                     tabBarColor: '#1f65ff',
                     tabBarIcon: ({ color }) => (
                         <MaterialCommunityIcons name="radar" color={color} size={26} />
@@ -53,7 +64,7 @@ const MainTabScreen = () => {
                 name="Luces"
                 component={LightsStackScreen}
                 options={{
-                    tabBarLabel: 'Luces',
+                    tabBarLabel: i18n.t('luces'),
                     tabBarColor: '#c41c00',
                     tabBarIcon: ({ color }) => (
                         <Entypo name="light-up" size={24} color={color} />
@@ -65,7 +76,7 @@ const MainTabScreen = () => {
                 name="Temperatura y humedad"
                 component={TemperatureStackScreen}
                 options={{
-                    tabBarLabel: 'Temperatura',
+                    tabBarLabel: i18n.t('temperatura'),
                     tabBarColor: '#694fad',
                     tabBarIcon: ({ color }) => (
                         <FontAwesome5 name="temperature-low" size={24} color={color} />

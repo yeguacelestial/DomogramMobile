@@ -4,6 +4,16 @@ import { createStackNavigator } from '@react-navigation/stack'
 import Icon from 'react-native-vector-icons/Ionicons'
 import LightsScreen from './LightsScreen'
 
+// TRANSLATIONS
+import i18n from 'i18n-js'
+
+import { en, es } from '../../translations.json'
+
+// Traducciones dependiendo del lenguaje
+i18n.translations = { en, es }
+
+// When a value is missing from a language it'll fallback to another language with the key present.
+i18n.fallbacks = true
 
 const background_color = '#c41c00'
 const LightsStack = createStackNavigator()
@@ -20,7 +30,7 @@ const LightsStackScreen = ({ navigation }) => {
             },
         }}>
             <LightsStack.Screen
-                name="Luces"
+                name={i18n.t('luces')}
                 component={LightsScreen}
                 options={{
                     headerLeft: () => (

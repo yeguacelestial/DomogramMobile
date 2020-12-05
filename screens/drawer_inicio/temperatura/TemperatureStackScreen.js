@@ -4,6 +4,17 @@ import { createStackNavigator } from '@react-navigation/stack'
 import Icon from 'react-native-vector-icons/Ionicons'
 import TemperatureScreen from './TemperatureScreen'
 
+// TRANSLATIONS
+import i18n from 'i18n-js'
+
+import { en, es } from '../../translations.json'
+
+// Traducciones dependiendo del lenguaje
+i18n.translations = { en, es }
+
+// When a value is missing from a language it'll fallback to another language with the key present.
+i18n.fallbacks = true
+
 const background_color = '#694fad'
 const TemperatureStack = createStackNavigator()
 
@@ -19,7 +30,7 @@ const TemperatureStackScreen = ({ navigation }) => {
             },
         }}>
             <TemperatureStack.Screen
-                name="Temperatura y humedad"
+                name={i18n.t('temperatura')}
                 component={TemperatureScreen}
                 options={{
                     headerLeft: () => (
