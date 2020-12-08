@@ -74,7 +74,7 @@ const SplashScreen = ({ navigation }) => {
 
                 <Picker
                     selectedValue={language.langKey}
-                    style={{ height: 50, width: 200, color: colors.text }}
+                    style={{ height: 40, width: 200, color: colors.text }}
                     onValueChange={
                         (itemValue, itemIndex) => {
                             setLanguage({ langKey: itemValue == "es" ? "es" : "en" })
@@ -140,7 +140,8 @@ const styles = StyleSheet.create({
     title: {
         color: '#05375a',
         fontSize: 30,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        marginTop: -30
     },
 
     text: {
