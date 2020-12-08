@@ -14,22 +14,24 @@ import * as Animatable from 'react-native-animatable'
 import { useTheme } from '@react-navigation/native'
 
 // TRANSLATIONS
-import * as Localization from 'expo-localization'
 import i18n from 'i18n-js'
 
 import { en, es } from './translations.json'
-import LocalizationContext from './LocalizationContext'
 
 import RNPickerSelect from 'react-native-picker-select'
+import { Picker } from '@react-native-picker/picker'
+
 
 // Traducciones dependiendo del lenguaje
 i18n.translations = { en, es }
 
-// Set the locale once at the beginning of the app
-// i18n.locale = "es"
-
 // When a value is missing from a language it'll fallback to another language with the key present.
 i18n.fallbacks = true;
+
+const languagesArray = [
+    { label: 'English', value: 'en', inputLabel: "English" },
+    { label: 'Español', value: 'es', inputLabel: "Español" }
+]
 
 const SplashScreen = ({ navigation }) => {
 
@@ -66,18 +68,21 @@ const SplashScreen = ({ navigation }) => {
                     {i18n.t('splash2')}
                 </Text>
 
-                <RNPickerSelect
-                    onValueChange={(value) => {
-                        setLanguage({ langKey: value == "es" ? "es" : "en" })
-                    }}
-                    placeholder={{
-                        label: "Lenguaje/Language"
-                    }}
-                    items={[
-                        { label: 'English', value: 'en' },
-                        { label: 'Español', value: 'es' }
-                    ]}
-                />
+                <Text style={[styles.text, { color: colors.text }]}>
+                    {i18n.t('splash4')}
+                </Text>
+
+                <Picker
+                    selectedValue={language.langKey}
+                    style={{ height: 50, width: 200, color: colors.text }}
+                    onValueChange={
+                        (itemValue, itemIndex) => {
+                            setLanguage({ langKey: itemValue == "es" ? "es" : "en" })
+                        }
+                    }>
+                    <Picker.Item label="Español" value="es" />
+                    <Picker.Item label="English" value="en" />
+                </Picker>
 
                 {/* Botón 'Empieza' */}
                 <View style={styles.button}>
