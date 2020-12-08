@@ -18,13 +18,15 @@ import * as Localization from 'expo-localization'
 import i18n from 'i18n-js'
 
 import { en, es } from './translations.json'
+import LocalizationContext from './LocalizationContext'
 
+import RNPickerSelect from 'react-native-picker-select'
 
 // Traducciones dependiendo del lenguaje
 i18n.translations = { en, es }
 
 // Set the locale once at the beginning of the app
-i18n.locale = Localization.locale
+// i18n.locale = "es"
 
 // When a value is missing from a language it'll fallback to another language with the key present.
 i18n.fallbacks = true;
@@ -32,6 +34,8 @@ i18n.fallbacks = true;
 const SplashScreen = ({ navigation }) => {
 
     const { colors } = useTheme()
+    const [language, setLanguage] = React.useState({ langKey: "es" })
+    i18n.locale = language.langKey
 
     return (
         <View style={styles.container}>
@@ -61,6 +65,19 @@ const SplashScreen = ({ navigation }) => {
                 <Text style={[styles.text, { color: colors.text }]}>
                     {i18n.t('splash2')}
                 </Text>
+
+                <RNPickerSelect
+                    onValueChange={(value) => {
+                        setLanguage({ langKey: value == "es" ? "es" : "en" })
+                    }}
+                    placeholder={{
+                        label: "Lenguaje/Language"
+                    }}
+                    items={[
+                        { label: 'English', value: 'en' },
+                        { label: 'Español', value: 'es' }
+                    ]}
+                />
 
                 {/* Botón 'Empieza' */}
                 <View style={styles.button}>

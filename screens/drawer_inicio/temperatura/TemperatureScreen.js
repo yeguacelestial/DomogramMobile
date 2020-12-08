@@ -82,9 +82,9 @@ const TemperatureScreen = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Text style={[styles.title, { color: colors.text }]}>Temperatura y humedad</Text>
+            <Text style={[styles.title, { color: colors.text }]}>{i18n.t('temperatura1')}</Text>
 
-            <Text style={[styles.subtitle, { color: colors.text }]}>Monitorea la temperatura interior y el porcentaje de humedad.</Text>
+            <Text style={[styles.subtitle, { color: colors.text }]}>{i18n.t('temperatura2')}</Text>
 
             <View style={{ height: 200, flexDirection: 'row' }}>
                 <YAxis
@@ -121,7 +121,7 @@ const TemperatureScreen = ({ navigation }) => {
                 color: theme.dark ? colors.text : '#694fad',
                 fontWeight: 'bold'
             }]}>
-                Temperatura actual: {sensor.temperatura} °C</Text>
+                {i18n.t('temperatura3')} {sensor.temperatura} °C</Text>
 
             <Text style={[styles.subtitle,
             {
@@ -129,7 +129,7 @@ const TemperatureScreen = ({ navigation }) => {
                 fontWeight: 'bold',
                 paddingBottom: 20
             }]}>
-                Humedad: {sensor.humedad} %</Text>
+                {i18n.t('temperatura4')} {sensor.humedad} %</Text>
 
         </View>
     )

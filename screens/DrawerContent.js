@@ -135,7 +135,7 @@ const DrawerContent = (props) => {
                             label={i18n.t('burguer4')}
                             onPress={() => {
                                 // props.navigation.navigate('Temperatura y humedad')
-                                Alert.alert("Telegram", "Redirigiendo al contacto del desarrollador...")
+                                // Alert.alert("Telegram", "Redirigiendo al contacto del desarrollador...")
                                 Linking.openURL('http://t.me/hombrecelestial')
                             }}
                         />

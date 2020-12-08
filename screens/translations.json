@@ -59,7 +59,11 @@
         "luces5": "Baño",
         "luces6": "Cocina",
         "luces7": "Entrada",
-        "luces8": "Comedor"
+        "luces8": "Comedor",
+        "temperatura1": "Temperatura y humedad",
+        "temperatura2": "Monitorea la temperatura interior y el porcentaje de humedad",
+        "temperatura3": "Temperatura actual: ",
+        "temperatura4": "Humedad: "
     },
     "en": {
         "splash1": "Domogram, your domestical partner.",
@@ -121,6 +125,10 @@
         "luces5": "Bathroom",
         "luces6": "Kitchen",
         "luces7": "Front-door",
-        "luces8": "Dinning room"
+        "luces8": "Dinning room",
+        "temperatura1": "Temperature and humidity",
+        "temperatura2": "Monitors the inner temperature, as well as the percentage of humidity",
+        "temperatura3": "Current temperature: ",
+        "temperatura4": "Humidity: "
     }
 }
