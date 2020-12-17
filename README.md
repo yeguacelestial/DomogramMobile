@@ -10,4 +10,4 @@ En este repositorio, se encuentra el código fuente del front-end. La documentac
 
 ## Demostración
 
-![Demostracion](../DomogramMobile/resources/demo.gif)
+![Demostracion](resources/demo.gif)
